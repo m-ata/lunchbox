@@ -6,12 +6,20 @@ import {
 const Home = ({ navigation }) => {
 
     return (
+        <>
         <Button
       title="SignUp"
       onPress={() =>
         navigation.navigate('SignUp')
       }
     />
+    <Button
+      title="SignIn"
+      onPress={() =>
+        navigation.navigate('SignIn')
+      }
+    />
+        </>
     )
 }
 

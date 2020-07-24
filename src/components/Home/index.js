@@ -2,24 +2,28 @@ import React from 'react';
 import {
     Button
 } from 'react-native';
+import { color } from 'react-native-reanimated';
 
 const Home = ({ navigation }) => {
 
     return (
-        <>
+      <>
         <Button
-      title="SignUp"
-      onPress={() =>
-        navigation.navigate('SignUp')
-      }
-    />
-    <Button
-      title="SignIn"
-      onPress={() =>
-        navigation.navigate('SignIn')
-      }
-    />
-        </>
+          title="SignUppp"
+          style={{backgroundColor: '#D85E44'}}
+          onPress={() =>
+            navigation.navigate('SignUp')
+          }
+        />
+        <Button
+          title="SignIn"
+          style={{backgroundColor: '#D85E44'}}
+          onPress={() =>
+            navigation.navigate('SignIn')
+          }
+
+        />
+      </>
     )
 }
 

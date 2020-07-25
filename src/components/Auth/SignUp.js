@@ -20,45 +20,30 @@ const SignUp = () => {
     let [loading, setLoading] = useState(false);
     let [errortext, setErrortext] = useState('');
     let [isRegistraionSuccess, setIsRegistraionSuccess] = useState(false);
+    const [bgColor, setBgColor] = useState('');
+    const [borderColor, setBorderColor] = useState('');
 
     return (
-        <View 
-            style={{ flex: 1, backgroundColor: '#307ecc' }}>
-      {/* <Loader loading={loading} /> */}
+        <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       <ScrollView keyboardShouldPersistTaps="handled">
-        <View style={{ alignItems: 'center' }}>
-          <Image
-            // source={require('../Image/aboutreact.png')}
-            style={{
-              width: '50%',
-              height: 100,
-              resizeMode: 'contain',
-              margin: 30,
-            }}
-          />
-        </View>
         <KeyboardAvoidingView enabled>
           <View style={styles.SectionStyle}>
+            <Text style={styles.textStyle} >Full Name</Text>
             <TextInput
               style={styles.inputStyle}
             //   onChangeText={UserName => setUserName(UserName)}
-              underlineColorAndroid="#FFFFFF"
-              placeholder="Enter Name"
               placeholderTextColor="#F6F6F7"
               autoCapitalize="sentences"
               returnKeyType="next"
-            //   onSubmitEditing={() =>
-            //     this._emailinput && this._emailinput.focus()
-            //   }
               blurOnSubmit={false}
             />
           </View>
           <View style={styles.SectionStyle}>
+          <Text style={styles.textStyle} >Mobile No </Text>
             <TextInput
               style={styles.inputStyle}
             //   onChangeText={UserEmail => setUserEmail(UserEmail)}
               underlineColorAndroid="#F6F6F7"
-              placeholder="Enter Email"
               placeholderTextColor="#F6F6F7"
               keyboardType="email-address"
             //   ref={ref => {
@@ -70,11 +55,11 @@ const SignUp = () => {
             />
           </View>
           <View style={styles.SectionStyle}>
+            <Text style={styles.textStyle} >Email </Text>
             <TextInput
               style={styles.inputStyle}
             //   onChangeText={UserAge => setUserAge(UserAge)}
               underlineColorAndroid="#F6F6F7"
-              placeholder="Enter Phone Number"
               placeholderTextColor="#F6F6F7"
               keyboardType="numeric"
             //   ref={ref => {
@@ -87,11 +72,11 @@ const SignUp = () => {
             />
           </View>
           <View style={styles.SectionStyle}>
+          <Text style={styles.textStyle} >Password </Text>
             <TextInput
               style={styles.inputStyle}
             //   onChangeText={UserAddress => setUserAddress(UserAddress)}
               underlineColorAndroid="#FFFFFF"
-              placeholder="Enter Password"
               placeholderTextColor="#F6F6F7"
               secureTextEntry={true}
             //   ref={ref => {
@@ -101,16 +86,15 @@ const SignUp = () => {
               blurOnSubmit={false}
             />
           </View>
-          {errortext != '' ? (
-            <Text style={styles.errorTextStyle}> {errortext} </Text>
-          ) : null}
+          <View style={styles.SectionStyle}>
           <TouchableOpacity
             style={styles.buttonStyle}
             activeOpacity={0.5}
             // onPress={handleSubmitButton}
             >
-            <Text style={styles.buttonTextStyle}>SIGNUP</Text>
+            <Text style={styles.buttonTextStyle}>REGISTER</Text>
           </TouchableOpacity>
+          </View>
         </KeyboardAvoidingView>
       </ScrollView>
     </View>
@@ -121,23 +105,23 @@ export default SignUp;
 
 const styles = StyleSheet.create({
   SectionStyle: {
-    flexDirection: 'row',
-    height: 40,
+    height: 60,
     marginTop: 20,
     marginLeft: 35,
     marginRight: 35,
     margin: 10,
   },
   buttonStyle: {
-    backgroundColor: '#7DE24E',
+    backgroundColor: '#f0a56c',
     borderWidth: 0,
     color: '#FFFFFF',
-    borderColor: '#7DE24E',
-    height: 40,
+    borderColor: '#f0a56c',
+    height: 50,
+    width: '100%',
     alignItems: 'center',
-    borderRadius: 30,
-    marginLeft: 35,
-    marginRight: 35,
+    borderRadius: 10,
+    // marginLeft: 35,
+    // marginRight: 35,
     marginTop: 20,
     marginBottom: 20,
   },
@@ -148,12 +132,15 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     flex: 1,
-    color: 'white',
+    color: '#0d0d0c',
     paddingLeft: 15,
     paddingRight: 15,
     borderWidth: 1,
-    borderRadius: 30,
-    borderColor: 'white',
+    borderRadius: 10,
+    borderColor: '#B0A8A6',
+    minHeight: 50,
+    marginTop: 10,
+    fontSize: 16
   },
   errorTextStyle: {
     color: 'red',
@@ -166,4 +153,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: 30,
   },
+  textStyle: {
+    color: '#B0A8A6',
+    fontSize: 16
+  }
 });

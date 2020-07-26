@@ -3,13 +3,6 @@ import { View, Text, Image, StyleSheet, ScrollView, ImageBackground } from 'reac
 
 const Home = ({ navigation }) => {
 
-  const users = [
-    {
-       name: 'brynn',
-       avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
-    },
-   ]
-
     return (
       <View style={styles.container}>
         <ScrollView keyboardShouldPersistTaps="handled">

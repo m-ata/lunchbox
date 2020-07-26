@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Picker } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -18,6 +18,7 @@ import Home from './src/components/Home/index.js';
 import SignUp from './src/components/Auth/SignUp.js';
 import SignIn from './src/components/Auth/SignIn.js';
 import SplashScreen from './src/components/Splash/index.js';
+
 
 const App = createStackNavigator({
   Splash : {
@@ -40,13 +41,25 @@ const App = createStackNavigator({
   },
   Home: {
     screen: Home,
-    navigationOptions: {
-      headerTitleStyle: {
-        alignSelf: 'center',
-        color: '#ffffff'
-      },
+    navigationOptions: () => {
+      
+      return {
+        headerTitle: () =>  <Picker
+        // selectedValue={selectedValue}
+        style={{ height: 50, 
+                  width: 250,
+                  alignSelf: 'center', 
+                  color: 'white' 
+                }}
+        // onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+      >
+        <Picker.Item label="Al Murabba, Riyadh" value="murabba" />
+        <Picker.Item label="Al Murabba, Makkah" value="makkah" />
+      </Picker>,
       headerStyle: {
         backgroundColor: '#f0a56c'
+      },
+      headerTintColor: '#ffffff',
       }
     }
   }

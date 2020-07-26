@@ -30,10 +30,25 @@ const App = createStackNavigator({
     screen: SignIn
   },
   SignUp: {
-    screen: SignUp
+    screen: SignUp,
+    navigationOptions: {
+      title: 'Register Now',
+      headerTitleStyle: {
+        alignSelf: 'center'
+      }
+    }
   },
   Home: {
-    screen: Home
+    screen: Home,
+    navigationOptions: {
+      headerTitleStyle: {
+        alignSelf: 'center',
+        color: '#ffffff'
+      },
+      headerStyle: {
+        backgroundColor: '#f0a56c'
+      }
+    }
   }
 }
 );

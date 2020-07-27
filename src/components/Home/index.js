@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./home";
 import SplashScreen from "../Splash";
-import { Picker } from 'react-native';
+import { Picker, Text } from 'react-native';
 
 
 const Stack = createStackNavigator();
@@ -20,16 +20,16 @@ const MainStackNavigator = () => {
     <Stack.Navigator screenOptions={screenOptionStyle}>
       <Stack.Screen name="Home" component={Home} options={() => {
          return {
-          headerTitle: () => <Picker
-          style={{ height: 50, 
-                    width: 250,
+          headerTitle: () => <Text
+          style={{  fontSize: 20,
                     alignSelf: 'center', 
                     color: 'white' 
                   }}
         >
-          <Picker.Item label="Al Murabba, Riyadh" value="murabba" />
-          <Picker.Item label="Al Murabba, Makkah" value="makkah" />
-        </Picker>,
+          Welcome to <Text style={{ fontWeight: 'bold'}}>TLB</Text>
+          {/* <Picker.Item label="Al Murabba, Riyadh" value="murabba" />
+          <Picker.Item label="Al Murabba, Makkah" value="makkah" /> */}
+        </Text>,
         headerStyle: {
           backgroundColor: '#f0a56c'
         },

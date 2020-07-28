@@ -1,4 +1,6 @@
+
 import React from 'react';
+
 import { View, Text, Image, StyleSheet, ScrollView, ImageBackground } from 'react-native'
 
 const Home = ({ navigation }) => {
@@ -6,13 +8,15 @@ const Home = ({ navigation }) => {
     return (
       <View style={styles.container}>
         <ScrollView keyboardShouldPersistTaps="handled">
-          <View style={styles.cardStyle}>
+          <View style={styles.cardStyle}
+            onStartShouldSetResponder={() => {navigation.navigate('SignIn')}}
+            >
             <ImageBackground
               style={styles.backgroundImgStyle}
               imageStyle={{ borderRadius: 20}}
               source={require('./../../../public/images/res1.jpg')}
             >
-              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center',}}>
+              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <Image 
                 style={styles.logoStyle}
                 source={require('./../../../public/images/logo1.png')}

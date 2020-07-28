@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./home";
 import SplashScreen from "../Splash";
 import { Picker, Text } from 'react-native';
-
+import SignIn from "../Auth/SignIn";
 
 const Stack = createStackNavigator();
 
@@ -36,6 +36,7 @@ const MainStackNavigator = () => {
         headerTintColor: '#ffffff',
         }
       }} />
+      <Stack.Screen name="SignIn" component={SignIn} />
     </Stack.Navigator>
   );
 };

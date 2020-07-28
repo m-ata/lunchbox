@@ -11,7 +11,6 @@ import SignUp from './src/components/Auth/SignUp.js';
 import SignIn from './src/components/Auth/SignIn.js';
 import SplashScreen from './src/components/Splash/index.js';
 import MainStackNavigator from './src/components/Home/index.js';
-import { color } from 'react-native-reanimated';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,7 +33,6 @@ const App = () => {
           }}
           source={require('./public/icons/home.png')}
         />,
-
         }} />
       <Tab.Screen name="Order" component={SignUp} options={{
           tabBarLabel: ({focused}) => {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ActivityIndicator, View, StyleSheet, Image, Text } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
+import { CommonActions } from '@react-navigation/native';
 
 const SplashScreen = (props) => {
     let [animating, setAnimating] = useState(true);
@@ -8,13 +9,26 @@ const SplashScreen = (props) => {
 
         console.log(props.navigation);
         setTimeout(() => {
-            props.navigation.navigate('Home')
-        }, 5000);
+            props.navigation.navigate('Tab');
+            props.navigation.dispatch(state => {
+              // Remove the home route from the stack
+              const routes = state.routes.filter(r => r.name !== 'Splash');
+            
+              return CommonActions.reset({
+                ...state,
+                routes,
+                index: routes.length - 1,
+              });
+            });
+        }, 3000);
     }, []);
 
     return (
         <View style={styles.container}>
-          <Text style={styles.content} >LUNCH BOX</Text>
+          <Image 
+          style={styles.logoStyle}
+          source={require('./../../../public/images/main_logo.png')}
+          />
         </View>
       );
 };
@@ -26,11 +40,10 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#D85E44',
+      backgroundColor: '#f0a56c',
     },
-    content: {
-        fontSize: 40,
-        color: '#FFFFFF',
-        fontWeight: 'bold'
-    }
+    logoStyle: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   });

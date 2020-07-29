@@ -9,7 +9,7 @@ const Home = ({ navigation }) => {
       <View style={styles.container}>
         <ScrollView keyboardShouldPersistTaps="handled">
           <View style={styles.cardStyle}
-            onStartShouldSetResponder={() => {navigation.navigate('SignIn')}}
+            onStartShouldSetResponder={() => {navigation.navigate('Menus')}}
             >
             <ImageBackground
               style={styles.backgroundImgStyle}
@@ -39,7 +39,7 @@ const Home = ({ navigation }) => {
               <View style={{flex: 1, justifyContent: 'center', alignItems: 'center',}}>
                 <Image 
                 style={styles.logoStyle}
-                source={require('./../../../public/images/logo2.jpg')}
+                source={require('./../../../public/images/logo2.png')}
                 />
                 <Text style={styles.title} >
                   Unique Barbeque

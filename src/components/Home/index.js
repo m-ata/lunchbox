@@ -4,6 +4,7 @@ import Home from "./home";
 import SplashScreen from "../Splash";
 import { Picker, Text } from 'react-native';
 import SignIn from "../Auth/SignIn";
+import Menus from "./menus";
 
 const Stack = createStackNavigator();
 
@@ -27,8 +28,6 @@ const MainStackNavigator = () => {
                   }}
         >
           Welcome to <Text style={{ fontWeight: 'bold'}}>TLB</Text>
-          {/* <Picker.Item label="Al Murabba, Riyadh" value="murabba" />
-          <Picker.Item label="Al Murabba, Makkah" value="makkah" /> */}
         </Text>,
         headerStyle: {
           backgroundColor: '#f0a56c'
@@ -37,6 +36,27 @@ const MainStackNavigator = () => {
         }
       }} />
       <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Screen name="Menus" component={Menus}
+          options={() => {
+            return {
+              headerTitle: () => <Picker    
+                   style={{ height: 50, 
+                      width: 250,
+                      alignSelf: 'center', 
+                      color: 'white' 
+                    }}>
+                <Picker.Item label="Al Murabba, Riyadh" value="murabba" />
+                <Picker.Item label="Al Murabba, Makkah" value="makkah" />
+              </Picker>,
+              headerStyle: {
+                backgroundColor: '#f0a56c',
+                color: '#ffffff',
+                alignSelf: 'center'
+              },
+              headerTintColor: '#ffffff',
+              }
+          }}
+       />
     </Stack.Navigator>
   );
 };

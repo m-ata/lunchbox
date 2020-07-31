@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, Text, Image, StyleSheet, ScrollView, ImageBackground, Button, } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground, Button, } from 'react-native';
 
 const Menus = ({ navigation }) => {
 
@@ -32,7 +32,7 @@ const Menus = ({ navigation }) => {
 
     return (
       <>
-        <ScrollView keyboardShouldPersistTaps="handled">
+        <ScrollView keyboardShouldPersistTaps="handled" style={{backgroundColor: 'white'}}>
         <View style={styles.container}>
             <View style={styles.cardStyle}>
             <ImageBackground
@@ -52,30 +52,30 @@ const Menus = ({ navigation }) => {
           </View>
           </View>
           <View style={{flexDirection: "row" ,marginTop: 20, justifyContent: 'space-between' }}>
-          <Button
-            // onPress={onPressLearnMore}
-            title="Special"
-            // color="#841584"
-            style={styles.buttonStyle}
-            />
-            <Button
-            // onPress={onPressLearnMore}
-            title="Chicken"
-            // color="#841584"
-            style={styles.buttonStyle}
-            />
-            <Button
-            // onPress={onPressLearnMore}
-            title="Mutton"
-            // color="#841584"
-            style={styles.buttonStyle}
-            />
-            <Button
-            // onPress={onPressLearnMore}
-            title="Today"
-            // color="#841584"
-            style={styles.buttonStyle}
-            />
+            <TouchableOpacity
+              style={styles.selectedButtonStyle}
+              // onPress={onPress}
+            >
+              <Text style={styles.selectedText}>Special</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.unselectedButtonStyle}
+              // onPress={onPress}
+            >
+              <Text style={styles.unselectedText}>Chicken</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.unselectedButtonStyle}
+              // onPress={onPress}
+            >
+              <Text style={styles.unselectedText}>Mutton</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.unselectedButtonStyle}
+              // onPress={onPress}
+            >
+              <Text style={styles.unselectedText}>Today's Special</Text>
+            </TouchableOpacity>
           </View>
             {
               menus.map((menu, i) => {
@@ -147,9 +147,30 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         fontSize: 15,
       },
-      buttonStyle: {
-          borderRadius: 10
+      selectedButtonStyle: {
+          borderRadius: 10,
+          backgroundColor: 'rgb(255, 137, 85)',
+          marginLeft: 16,
+          // width: 100,
+          alignItems: 'center',
+          padding: 10,
       },
+      unselectedButtonStyle: {
+        borderRadius: 10,
+        backgroundColor: 'rgb(242, 242, 242)',
+        marginLeft: 16,
+        // width: 100,
+        alignItems: 'center',
+        padding: 10,
+    },
+    selectedText: {
+        color: '#ffffff',
+        fontSize: 18
+    },
+    unselectedText: {
+      color: '#000000',
+      fontSize: 18
+  },
       menuStyle: {
         marginTop: 30,
         flex: 1,

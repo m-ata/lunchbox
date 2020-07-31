@@ -1,10 +1,38 @@
 import React from 'react';
 
-import { View, Text, Image, StyleSheet, ScrollView, ImageBackground, Button } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, ImageBackground, Button, } from 'react-native';
 
 const Menus = ({ navigation }) => {
 
+  const menus = [{
+    name: 'Chicken Karhai Half',
+    description: 'Fries topped with melted cheese ...',
+    price: '45.00',
+    currency: 'SAR',
+    url: require('./../../../public/images/menu1.png')
+    }, {
+        name: 'Special Biryani Full',
+      description: 'Fries topped with melted cheese ...',
+      price: '45.00',
+      currency: 'SAR',
+      url: require('./../../../public/images/menu2.png')
+    }, {
+      name: 'Chicken Boneless',
+        description: 'Fries topped with melted cheese ...',
+        price: '45.00',
+        currency: 'SAR',
+        url: require('./../../../public/images/menu3.png')
+    }, {
+      name: 'Daal Tadka Special',
+        description: 'Fries topped with melted cheese ...',
+        price: '45.00',
+        currency: 'SAR',
+        url: require('./../../../public/images/menu4.png')
+    }]
+
     return (
+      <>
+        <ScrollView keyboardShouldPersistTaps="handled">
         <View style={styles.container}>
             <View style={styles.cardStyle}>
             <ImageBackground
@@ -21,6 +49,7 @@ const Menus = ({ navigation }) => {
                 </Text>
               </View>
             </ImageBackground>
+          </View>
           </View>
           <View style={{flexDirection: "row" ,marginTop: 20, justifyContent: 'space-between' }}>
           <Button
@@ -48,7 +77,39 @@ const Menus = ({ navigation }) => {
             style={styles.buttonStyle}
             />
           </View>
-        </View>
+            {
+              menus.map((menu, i) => {
+                return (
+              <View style={styles.menuStyle}>
+                <View style={{marginLeft: 16}}>
+                  <Text style={{fontSize: 20, color: 'black'}}> {menu.name} </Text>
+                  <Text style={{fontSize: 15, color: 'black', marginTop: 4, marginLeft: 8}}>
+                    { menu.description }
+                    </Text>
+                  <Text style={{fontWeight: 'bold', color: 'rgb(3, 160, 139)',  marginTop: 4, marginLeft: 8}}>
+                    { menu.price }  SAR
+                    </Text>
+                </View>
+                <View style={{width: 120, height: 100, marginLeft: 'auto', marginRight: 16 }}>
+                  <ImageBackground
+                    source={menu.url}
+                    style={{width: '100%', height: '100%'}}
+                    imageStyle={{ borderRadius: 20}}
+                  >
+                  </ImageBackground>
+                </View>
+                <View
+                  style={{
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
+                  }}
+                />
+              </View>
+                )
+              })
+            }
+          </ScrollView>
+      </>
     )
 };
 
@@ -88,5 +149,12 @@ const styles = StyleSheet.create({
       },
       buttonStyle: {
           borderRadius: 10
+      },
+      menuStyle: {
+        marginTop: 30,
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        height: 100
       }
 })

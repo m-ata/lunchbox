@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground, Button, } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground } from 'react-native';
 
 const Menus = ({ navigation }) => {
 
@@ -80,7 +80,7 @@ const Menus = ({ navigation }) => {
             {
               menus.map((menu, i) => {
                 return (
-              <View style={styles.menuStyle}>
+              <View style={styles.menuStyle} onStartShouldSetResponder={() => navigation.navigate('MenuDetail')} >
                 <View style={{marginLeft: 16}}>
                   <Text style={{fontSize: 20, color: 'black'}}> {menu.name} </Text>
                   <Text style={{fontSize: 15, color: 'black', marginTop: 4, marginLeft: 8}}>

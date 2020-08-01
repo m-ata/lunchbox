@@ -5,6 +5,7 @@ import SplashScreen from "../Splash";
 import { Picker, Text } from 'react-native';
 import SignIn from "../Auth/SignIn";
 import Menus from "./menus";
+import MenuDetail from "./MenuDetail";
 
 const Stack = createStackNavigator();
 
@@ -57,6 +58,7 @@ const MainStackNavigator = () => {
               }
           }}
        />
+       <Stack.Screen name="MenuDetail" component={MenuDetail} />
     </Stack.Navigator>
   );
 };

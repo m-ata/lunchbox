@@ -58,7 +58,12 @@ const MainStackNavigator = () => {
               }
           }}
        />
-       <Stack.Screen name="MenuDetail" component={MenuDetail} />
+       <Stack.Screen 
+          name="MenuDetail" 
+          component={MenuDetail}
+          options={{headerShown: false}}
+
+       />
     </Stack.Navigator>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { View,   
         Text, 
@@ -8,32 +8,52 @@ import { View,
         ImageBackground, 
         Image, 
         Dimensions,
-        Animated
+        Animated,
+        TextInput
     } from 'react-native';
 
 const MenuDetail = ({ route, navigation}) => {
 
     const { menu } = route.params;
-    const choices = [
+    const [choices, setChoices] = useState([
         {
             name: 'Extra Spicy',
             price: '2.00',
             currency: 'SAR',
-            url: './../../../public/icons/radio.png'
+            isSelected: false,
         },
         {
             name: 'No Extra Oil',
             price: '2.00',
             currency: 'SAR',
-            url: './../../../public/icons/radio.png'
+            isSelected: false,
         },
         {
             name: 'Extra Half Rice',
             price: '2.00',
             currency: 'SAR',
-            url: './../../../public/icons/radio.png'
+            isSelected: false,
         },
-    ]
+    ]);
+    const [qty, setQty] = useState(0);
+    const [hasFilled, setHasFilled] = useState(false);
+    const [showChoices, setShowChoices] = useState(true);
+
+    useEffect(() => {
+        if (choices.length > 0) {
+            const isExist = choices.find(x => x.isSelected === true) && qty > 0;
+            isExist ? setHasFilled(true) : setHasFilled(false);
+        }
+    }, [choices, qty]);
+
+    const handleSelectedChoice = (index) => {
+        const updatedChoices = [...choices];
+        updatedChoices.map((choice, i) => {
+            if (i === index) choice.isSelected = true;
+            else choice.isSelected = false;
+        });
+        setChoices(updatedChoices);
+    }
 
     return(
         <View style={styles.container}>
@@ -69,10 +89,12 @@ const MenuDetail = ({ route, navigation}) => {
                                 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginLeft: 16}}>
                     <Text style={{color: 'black', fontSize: 18}}> Your Choices </Text>
-                    <Image 
-                        source={require('./../../../public/icons/arrow_up.png')}
-                        style={{marginLeft: 8}}
-                    />
+                    <TouchableOpacity onPress={() => setShowChoices(!showChoices)}>
+                        <Image 
+                            source={require('./../../../public/icons/arrow_up.png')}
+                            style={{marginLeft: 8}}
+                        />
+                    </TouchableOpacity>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
                         <TouchableOpacity 
@@ -90,22 +112,28 @@ const MenuDetail = ({ route, navigation}) => {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <ScrollView>
+                {
+                    showChoices && <ScrollView>
                     {
-                        choices.map(c => {
+                        choices.map((c, i) => {
                             return(
                                 <>
                                     <View style={{flexDirection: 'row', justifyContent: 'space-between', minHeight: 50}} >
                                         <View style={{ flexDirection: 'row', 
                                                         justifyContent: 'flex-start', 
                                                         alignItems: 'center', 
-                                                        marginLeft: 16}} >
+                                                        marginLeft: 16}} 
+                                                onStartShouldSetResponder={() => {
+                                                    handleSelectedChoice(i);
+                                                }}
+                                        >
                                             <Image
-                                                source={require('./../../../public/icons/radio.png')}
+                                            source={c.isSelected ? require('./../../../public/icons/radio_selected.png') :
+                                             require('./../../../public/icons/radio.png')}
                                             />
                                             <Text style={{ fontSize: 17, 
                                                             fontWeight: 'bold', 
-                                                            color: 'black',
+                                                            color: c.isSelected ? 'rgb(23, 179, 158)' : 'black',
                                                             marginLeft: 8
                                                         }}> {c.name} </Text>
                                         </View>
@@ -132,32 +160,70 @@ const MenuDetail = ({ route, navigation}) => {
                                 backgroundColor: 'rgb(248, 248, 248)',
                                 minHeight: 50
                                 }}>
-                                    <Text style={{color: 'black', fontSize: 18, marginLeft: 16}}> How many ? </Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginLeft: 16}}>
+                            <Text style={{color: 'black', fontSize: 18,}}> How many ? </Text>
+                        </View>
                     </View>
-                    <View style={{flexDirection: 'row', justifyContent: 'center', minHeight: 100}}>
-                        <Image
-                            source={require('./../../../public/icons/minus.png')}
-                            style={{marginTop: 16}}
-                        />
-                        <Text style={{marginLeft: 16, marginTop: 24, fontSize: 20, fontWeight: 'bold'}}>0</Text>
-                        <Image
-                            source={require('./../../../public/icons/plus.png')}
-                            style={{marginTop: 16, marginLeft: 16}}
+                    <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', minHeight: 100}}>
+                        <TouchableOpacity onPress={() => setQty(prevQty => prevQty - 1)}>
+                            <Image
+                                source={require('./../../../public/icons/minus.png')}
+                            />
+                        </TouchableOpacity>
+                        <Text style={{marginLeft: 16, fontSize: 20, fontWeight: 'bold'}}> 
+                                { qty }
+                        </Text>
+                        <TouchableOpacity onPress={() => setQty(prevQty => prevQty + 1)}>
+                            <Image
+                                source={require('./../../../public/icons/plus.png')}
+                                style={{ marginLeft: 16}}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{flexDirection: 'row', 
+                                justifyContent: 'space-between', 
+                                backgroundColor: 'rgb(248, 248, 248)',
+                                minHeight: 50
+                                }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginLeft: 16}}>
+                            <Text style={{color: 'black', fontSize: 18,}}> Special Instruction </Text>
+                        </View>
+                    </View>
+                    <View style={{borderWidth: 1, 
+                                    borderColor: 'grey', 
+                                    margin: 16,
+                                    borderRadius: 10,
+                                    flexDirection: 'row', 
+                                    justifyContent: 'flex-start', 
+                                    alignItems: 'flex-start'
+                                    }} 
+                    >
+                        <TextInput
+                            style={{height: 100,  }}
+                            underlineColorAndroid="transparent"
+                            placeholder="Special Instruction"
+                            placeholderTextColor="grey"
+                            numberOfLines={10}
+                            multiline={true}
                         />
                     </View>
                 </ScrollView>
+                }
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                 <TouchableOpacity
                     style={{borderRadius: 10, 
-                        backgroundColor: 'rgb(178, 178, 178)', 
+                        backgroundColor: hasFilled ? 'rgb(255, 137, 85)' : 'rgb(178, 178, 178)', 
                         marginLeft: 16,
                         marginRight: 16,
+                        // marginTop: 16,
                         padding: 10,
                         width: Dimensions.get('window').width - 50,
                         flexDirection: 'row',
                         justifyContent: 'space-between',
                     }}
+                    disabled={hasFilled ? false: true}
+                    onPress={() => navigation.goBack() }
                 >
                     <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center'}}>
                         <Text style={[styles.buttonText, { marginLeft: 16 }]}>ADD TO BASKET</Text>

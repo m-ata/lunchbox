@@ -1,7 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "./home";
-import SplashScreen from "../Splash";
+import Home from "./Home";
 import { Picker, Text } from 'react-native';
 import SignIn from "../Auth/SignIn";
 import Menus from "./menus";
@@ -31,7 +30,7 @@ const MainStackNavigator = () => {
           Welcome to <Text style={{ fontWeight: 'bold'}}>TLB</Text>
         </Text>,
         headerStyle: {
-          backgroundColor: '#f0a56c'
+          backgroundColor: 'rgb(255, 137, 85)'
         },
         headerTintColor: '#ffffff',
         }
@@ -50,7 +49,7 @@ const MainStackNavigator = () => {
                 <Picker.Item label="Al Murabba, Makkah" value="makkah" />
               </Picker>,
               headerStyle: {
-                backgroundColor: '#f0a56c',
+                backgroundColor: 'rgb(255, 137, 85)',
                 color: '#ffffff',
                 alignSelf: 'center'
               },

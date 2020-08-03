@@ -1,75 +1,62 @@
 
 import React from 'react';
 
-import { View, Text, Image, StyleSheet, ScrollView, ImageBackground } from 'react-native'
+import { View, Text, Image, StyleSheet, ScrollView, ImageBackground, TouchableOpacity } from 'react-native'
 
 const Home = ({ navigation }) => {
+
+  const restaurants = [
+    {
+      image: require('./../../../public/images/res1.jpg'),
+      logo: require('./../../../public/images/logo1.png'),
+      title: 'The Lunch Box',
+      description: 'Indian & Arabic Cuisine'
+    },
+    {
+      image: require('./../../../public/images/res2.jpg'),
+      logo: require('./../../../public/images/logo2.png'),
+      title: 'Unique Barbeque',
+      description: 'BBQ, Turkish & Indian Food'
+    },
+    {
+      image: require('./../../../public/images/res3.jpg'),
+      logo: require('./../../../public/images/logo3.png'),
+      title: 'Lunch Box Express',
+      description: 'Chaat, Shawarma & Juice'
+    }
+  ]
 
     return (
       <View style={styles.container}>
         <ScrollView keyboardShouldPersistTaps="handled">
-          <View style={styles.cardStyle}
-            onStartShouldSetResponder={() => {navigation.navigate('Menus')}}
-            >
-            <ImageBackground
-              style={styles.backgroundImgStyle}
-              imageStyle={{ borderRadius: 20}}
-              source={require('./../../../public/images/res1.jpg')}
-            >
-              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Image 
-                style={styles.logoStyle}
-                source={require('./../../../public/images/logo1.png')}
-                />
-                <Text style={styles.title} >
-                  The Lunch Box
-                </Text>
-                <Text style={styles.description} >
-                  Indian & Arabic Cuisine
-                </Text>
-              </View>
-            </ImageBackground>
-          </View>
-          <View style={styles.cardStyle}>
-            <ImageBackground
-              style={styles.backgroundImgStyle}
-              imageStyle={{ borderRadius: 20}}
-              source={require('./../../../public/images/res2.jpg')}
-            >
-              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center',}}>
-                <Image 
-                style={styles.logoStyle}
-                source={require('./../../../public/images/logo2.png')}
-                />
-                <Text style={styles.title} >
-                  Unique Barbeque
-                </Text>
-                <Text style={styles.description} >
-                    BBQ, Turkish & Indian Food
-                </Text>
-              </View>
-            </ImageBackground>
-          </View>
-          <View style={styles.cardStyle}>
-            <ImageBackground
-            imageStyle={{ borderRadius: 20}}
-              style={styles.backgroundImgStyle}
-              source={require('./../../../public/images/res3.jpg')}
-            >
-              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center',}}>
-                <Image 
-                style={styles.logoStyle}
-                source={require('./../../../public/images/logo3.png')}
-                />
-                <Text style={styles.title} >
-                  Lunch Box Express
-                </Text>
-                <Text style={styles.description} >
-                  Chaat, Shawarma & Juice
-                </Text>
-              </View>
-            </ImageBackground>
-          </View>
+          {
+            restaurants.map(r => {
+              return (
+                <TouchableOpacity onPress={() => {navigation.navigate('Menus')}}>
+                  <View style={styles.cardStyle} >
+                    <ImageBackground
+                      style={styles.backgroundImgStyle}
+                      imageStyle={{ borderRadius: 20}}
+                      source={r.image}
+                    >
+                      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                        <Image 
+                        style={styles.logoStyle}
+                        source={r.logo}
+                        />
+                        <Text style={styles.title} >
+                          { r.title }
+                        </Text>
+                        <Text style={styles.description} >
+                          { r.description }
+                        </Text>
+                      </View>
+                    </ImageBackground>
+                  </View>
+                </TouchableOpacity>
+              )
+            })
+          }
         </ScrollView>
       </View>
     )

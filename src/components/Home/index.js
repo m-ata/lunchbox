@@ -5,6 +5,7 @@ import { Picker, Text } from 'react-native';
 import SignIn from "../Auth/SignIn";
 import Menus from "./menus";
 import MenuDetail from "./MenuDetail";
+import BasketIndex from "../Basket";
 
 const Stack = createStackNavigator();
 
@@ -62,6 +63,24 @@ const MainStackNavigator = () => {
           component={MenuDetail}
           options={{headerShown: false}}
 
+       />
+       <Stack.Screen 
+          name="Basket"
+          component={BasketIndex}
+          options={() => {
+            return {
+              headerStyle: {
+                backgroundColor: 'rgb(255, 137, 85)',
+                color: '#ffffff',
+                alignSelf: 'center'
+              },
+              headerTitle: <Text style={{  fontSize: 20,
+                alignSelf: 'center', 
+                color: 'white' 
+              }}>Your Basket</Text>
+            }
+          }
+          }
        />
     </Stack.Navigator>
   );

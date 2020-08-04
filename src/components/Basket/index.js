@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { View,   
         Text, 
         TouchableOpacity, 
-        StyleSheet, 
-        ScrollView, 
-        ImageBackground, 
-        Image, 
-        Dimensions,
-        TextInput
     } from 'react-native';
+import Basket from './Basket';
+import Pickup from './Pickup';
 
 const BasketIndex = () => {
+
+    const [activeTab, setActiveTab] = useState('delivery');
 
     return (
         <View style={{flex: 1,
@@ -33,30 +31,34 @@ const BasketIndex = () => {
                                 flexDirection: 'row', 
                                 alignItems: 'center', 
                                 width: '50%',
-                                backgroundColor: 'white', 
+                                backgroundColor: activeTab === 'delivery' ? 'white' : 'rgb(240, 240, 240)', 
                                 margin: 8,
                                 borderRadius: 10,
                                 height: 40
                                 }}
                 >
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => setActiveTab('delivery')}>
                         <Text style={{fontSize: 16, fontWeight: 'bold'}}>Delivery</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={{justifyContent: 'center',
+                <View style={{  justifyContent: 'center',
                                 flexDirection: 'row', 
                                 alignItems: 'center', 
                                 width: '40%',
-                                backgroundColor: 'rgb(240, 240, 240)', 
+                                backgroundColor: activeTab === 'pickup' ? 'white' : 'rgb(240, 240, 240)', 
                                 margin: 8,
                                 borderRadius: 10,
                                 height: 40
-            }}>
-                    <TouchableOpacity>
+                        }}
+                >
+                    <TouchableOpacity onPress={() => setActiveTab('pickup')}>
                         <Text style={{fontSize: 16, fontWeight: 'bold'}}>Pickup</Text>
                     </TouchableOpacity>
                 </View>
             </View>
+            {
+                activeTab === 'delivery' ? <Basket /> : <Pickup />
+            }
         </View>
     )
 }

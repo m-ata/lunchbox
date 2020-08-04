@@ -71,10 +71,8 @@ const MainStackNavigator = () => {
             return {
               headerStyle: {
                 backgroundColor: 'rgb(255, 137, 85)',
-                color: '#ffffff',
-                alignSelf: 'center'
               },
-              headerTitle: <Text style={{  fontSize: 20,
+              headerTitle: () => <Text style={{  fontSize: 20,
                 alignSelf: 'center', 
                 color: 'white' 
               }}>Your Basket</Text>

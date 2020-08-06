@@ -9,12 +9,20 @@ import { View,
     Dimensions
 } from 'react-native';
 
-const Basket = () => {
+const Basket = ({ navigation }) => {
 
     const basket = [
         {
+            name: 'Chicken Karhai Half',
+            description: 'Extra spicy, Half rice',
+            price: '45.00',
+            discount: '0.00',
+            currency: 'SAR',
+            qty: '2x'
+        },
+        {
             name: 'Special Biryani',
-            description: 'Extra Spicy, Half rice',
+            description: 'Extra spicy, Half rice',
             price: '45.00',
             discount: '20.00',
             currency: 'SAR',
@@ -22,7 +30,7 @@ const Basket = () => {
         },
         {
             name: 'Chicken Karahi Half',
-            description: 'Extra Spicy, Half rice',
+            description: 'Extra spicy, Half rice',
             price: '45.00',
             discount: '0.00',
             currency: 'SAR',
@@ -30,20 +38,39 @@ const Basket = () => {
         },
     ]
 
+    // const [panelProps, setPanelProps] = useState({
+    //     fullWidth: true,
+    //     openLarge: true,
+    //     showCloseButton: true,
+    //     onClose: () => closePanel(),
+    //     onPressCloseButton: () => closePanel(),
+    //     onlySmall: true
+    //     // ...or any prop you want
+    //   });
+    //   const [isPanelActive, setIsPanelActive] = useState(false);
+     
+    //   const openPanel = () => {
+    //     setIsPanelActive(true);
+    //   };
+     
+    //   const closePanel = () => {
+    //     setIsPanelActive(false);
+    //   };
+
     return (
-        <View>
-            <ScrollView>
-                <ScrollView>
-                    <View style={{height: 200}}>
+        <View style={{flex: 1}} >
+            <ScrollView keyboardShouldPersistTaps="handled">
+                    <View style={{height: 280, marginTop: 16}}>
                         {
                             basket.map((b, i) => {
                                 return (
                                     <>
                                         <View style={{flexDirection: 'row'}}>
                                             <View style={{margin: 16}}>
-                                                <Text style={{fontSize: 18, 
+                                                <Text style={{fontSize: 19.5, 
                                                             fontWeight: 'bold',  
-                                                            color: 'rgb(23, 179, 158)'
+                                                            color: 'rgb(23, 179, 158)',
+                                                            lineHeight: 23.5
                                                         }} 
                                                 > 
                                                     {b.qty} 
@@ -51,8 +78,15 @@ const Basket = () => {
                                                 
                                             </View>
                                             <View style={{marginTop: 16}}>
-                                                <Text style={{fontSize: 18, fontWeight: 'bold', color: 'black'}}> {b.name} </Text>
-                                                <Text style={{fontSize: 16, color: 'black'}}> {b.description} </Text>
+                                                <Text style={{fontSize: 19.5, 
+                                                            fontWeight: 'bold', 
+                                                            color: 'black',
+                                                            lineHeight: 23.5
+                                                        }}
+                                                            > {b.name} </Text>
+                                                <Text style={{fontSize: 17, 
+                                                            color: 'black', 
+                                                            lineHeight: 26}}> {b.description} </Text>
                                             </View>
                                             <View style={{ marginLeft: 'auto', marginRight: 16, marginTop: 16 }}>
                                                 <Text 
@@ -88,11 +122,10 @@ const Basket = () => {
                             })
                         }
                     </View>
-                </ScrollView>
                 <View style={{flexDirection: 'row', 
                                     justifyContent: 'space-between', 
                                     backgroundColor: 'rgb(248, 248, 248)',
-                                    minHeight: 50
+                                    height: 80
                                     }}>
                             <View 
                                 style={{ flexDirection: 'row', 
@@ -103,7 +136,7 @@ const Basket = () => {
                                 <Image
                                     source={require('./../../../public/icons/wallet.png')}
                                 />
-                                <Text style={{color: 'black', fontSize: 18, fontWeight: 'bold', marginLeft: 8}}> 
+                                <Text style={{color: 'black', lineHeight: 21, fontSize: 18, fontWeight: 'bold', marginLeft: 8}}> 
                                     Cash on Delivery 
                                 </Text>
                             </View>
@@ -196,7 +229,7 @@ const Basket = () => {
                             flexDirection: 'row',
                             justifyContent: 'center',
                         }}
-                        // onPress={() => navigation.navigate('Basket') }
+                        // onPress={() => openPanel()}
                     >
                         {/* <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}> */}
                             <Text style={{ marginLeft: 16, 
@@ -207,6 +240,9 @@ const Basket = () => {
                         {/* </View> */}
                     </TouchableOpacity>
                 </View>
+                {/* <SwipeablePanel {...panelProps} isActive={isPanelActive}>
+                    <SignUp />
+                </SwipeablePanel> */}
             </ScrollView>
         </View>
     )
@@ -218,11 +254,13 @@ const styles = StyleSheet.create({
     activePrice: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: 'black'
+        color: 'black',
+        lineHeight: 21
     },
     nonActivePrice: {
         fontSize: 17,
-        color: 'rgb(175, 175, 175)'
+        color: 'rgb(175, 175, 175)',
+        lineHeight: 19.5
     },
     discountedPrice: {
         fontSize: 18,

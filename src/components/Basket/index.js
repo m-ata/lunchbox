@@ -7,7 +7,7 @@ import { View,
 import Basket from './Basket';
 import Pickup from './Pickup';
 
-const BasketIndex = () => {
+const BasketIndex = ( { navigation } ) => {
 
     const [activeTab, setActiveTab] = useState('delivery');
 
@@ -21,7 +21,7 @@ const BasketIndex = () => {
                             alignItems: 'center', 
                             borderWidth: 1,
                             marginTop: 16,
-                            height: 56,
+                            height: 50,
                             marginLeft: 16,
                             marginRight: 16,
                             borderRadius: 10,
@@ -38,7 +38,9 @@ const BasketIndex = () => {
                                 }}
                 >
                     <TouchableOpacity onPress={() => setActiveTab('delivery')}>
-                        <Text style={{fontSize: 16, fontWeight: 'bold'}}>Delivery</Text>
+                        <Text style={{fontSize: 14, lineHeight: 23.5, color: 'black', fontWeight: 'bold'}}>
+                            Delivery
+                        </Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{  justifyContent: 'center',
@@ -52,12 +54,14 @@ const BasketIndex = () => {
                         }}
                 >
                     <TouchableOpacity onPress={() => setActiveTab('pickup')}>
-                        <Text style={{fontSize: 16, fontWeight: 'bold'}}>Pickup</Text>
+                        <Text style={{fontSize: 14, lineHeight: 23.5, color: 'black', fontWeight: 'bold'}}>
+                            Pickup
+                        </Text>
                     </TouchableOpacity>
                 </View>
             </View>
             {
-                activeTab === 'delivery' ? <Basket /> : <Pickup />
+                activeTab === 'delivery' ? <Basket navigation={navigation} /> : <Pickup />
             }
         </View>
     )

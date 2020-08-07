@@ -57,7 +57,8 @@ const MenuDetail = ({ route, navigation}) => {
 
     return(
         <View style={styles.container}>
-            <View style={{height: 300}}>
+            <ScrollView keyboardShouldPersistTaps="handled" >
+            <View style={{height: 264}}>
                 <ImageBackground
                     style={{height: '100%', width: '100%'}}
                     source={menu.url}
@@ -71,49 +72,51 @@ const MenuDetail = ({ route, navigation}) => {
                     </View>
                 </ImageBackground>
             </View>
-            <View style={{minHeight: 100, marginLeft: 16, marginTop: 16}}>
-                <ScrollView keyboardShouldPersistTaps="handled">
-                    <View style={{flexDirection:'row', flexWrap:'wrap'}}>
-                        <Text style={{fontSize: 20, fontWeight: 'bold', color: 'black'}}> {menu.name} </Text>
-                        <Text style={{fontSize: 16, marginTop: 4, marginLeft: -4 }} > - </Text>
-                        <Text style={{fontSize: 16, marginTop: 4 }} >KCAL 800 </Text>
+            <View style={{marginLeft: 16, marginTop: 16}}>
+                    <View style={{flexDirection:'row', lineHeight: 18,}}>
+                        <Text style={{fontSize: 21,   fontWeight: 'bold', color: 'black'}}> {menu.name} </Text>
+                        <Text style={{fontSize: 15.6, marginTop: 4, marginLeft: -4 }} > - </Text>
+                        <Text style={{fontSize: 15.6, marginTop: 4 }} >KCAL 800 </Text>
                     </View>
-                    <Text style={{fontSize: 16, marginTop: 8}}> {menu.description} </Text>
-                </ScrollView>
+                    <Text style={{fontSize: 16.9, marginTop: 8, lineHeight: 26}}> {menu.description} </Text>
             </View>
-            <View style={{height: 250}}>
-                <View style={{flexDirection: 'row', 
+            <View style={{flexDirection: 'row', 
                                 justifyContent: 'space-between', 
                                 backgroundColor: 'rgb(248, 248, 248)',
-                                minHeight: 50
+                                height: 58.5,
+                                marginTop: 16
                                 }}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginLeft: 16}}>
-                    <Text style={{color: 'black', fontSize: 18}}> Your Choices </Text>
-                    <TouchableOpacity onPress={() => setShowChoices(!showChoices)}>
-                        <Image 
-                            source={require('./../../../public/icons/arrow_up.png')}
-                            style={{marginLeft: 8}}
-                        />
+                <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginLeft: 16}}>
+                <Text style={{color: 'black', fontSize: 19.5, lineHeight: 23.5}}> Your Choices </Text>
+                <TouchableOpacity onPress={() => setShowChoices(!showChoices)}>
+                    <Image 
+                        source={require('./../../../public/icons/arrow_up.png')}
+                        style={{marginLeft: 8}}
+                    />
+                </TouchableOpacity>
+                </View>
+                <View style={{ flexDirection: 'row', 
+                                    justifyContent: 'flex-end', 
+                                    alignItems: 'center',
+                                }}
+                >
+                    <TouchableOpacity 
+                        style={{
+                            backgroundColor: 'rgb(23, 179, 158)',
+                            borderRadius: 6.5,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: 78.6,
+                            height: 28.6,
+                            marginRight: 16
+                        }}
+                    >
+                        <Text style={{color: 'white', fontSize: 12, lineHeight: 14}}> REQUIRED </Text>
                     </TouchableOpacity>
-                    </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
-                        <TouchableOpacity 
-                            style={{
-                                backgroundColor: 'rgb(23, 179, 158)',
-                                borderRadius: 10,
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: 100,
-                                height: 30,
-                                marginRight: 16
-                            }}
-                        >
-                            <Text style={{color: 'white',}}> REQUIRED </Text>
-                        </TouchableOpacity>
-                    </View>
+                </View>
                 </View>
                 {
-                    showChoices && <ScrollView>
+                    showChoices && <View>
                     {
                         choices.map((c, i) => {
                             return(
@@ -131,16 +134,20 @@ const MenuDetail = ({ route, navigation}) => {
                                             source={c.isSelected ? require('./../../../public/icons/radio_selected.png') :
                                              require('./../../../public/icons/radio.png')}
                                             />
-                                            <Text style={{ fontSize: 17, 
+                                            <Text style={{ fontSize: 18, 
+                                                            lineHeight: 25,
                                                             fontWeight: 'bold', 
                                                             color: c.isSelected ? 'rgb(23, 179, 158)' : 'black',
                                                             marginLeft: 8
                                                         }}> {c.name} </Text>
                                         </View>
-                                        <View style={{ flexDirection: 'row', 
+                                        <View style={{  flexDirection: 'row', 
                                                         justifyContent: 'flex-end',
                                                         alignItems: 'center',
-                                                        marginRight: 16
+                                                        marginRight: 16,
+                                                        fontSize: 17, 
+                                                        lineHeight: 26,
+                                                        color: 'black'
                                                         }}>
                                             <Text>+ {c.price} {c.currency} </Text>
                                         </View>
@@ -155,22 +162,30 @@ const MenuDetail = ({ route, navigation}) => {
                             )
                         })
                     }
-                    <View style={{flexDirection: 'row', 
+                    </View>
+                }
+                <View style={{flexDirection: 'row', 
                                 justifyContent: 'space-between', 
                                 backgroundColor: 'rgb(248, 248, 248)',
-                                minHeight: 50
+                                height: 58.5,
+                                marginTop: showChoices ? 0 :  16
                                 }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginLeft: 16}}>
                             <Text style={{color: 'black', fontSize: 18,}}> How many ? </Text>
                         </View>
-                    </View>
-                    <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', minHeight: 100}}>
+                </View>
+                    <View style={{flexDirection: 'row', 
+                        justifyContent: 'center', 
+                        alignItems: 'center',
+                        margin: 24
+                        // minHeight: 100
+                        }}>
                         <TouchableOpacity onPress={() => setQty(prevQty => prevQty - 1)}>
                             <Image
                                 source={require('./../../../public/icons/minus.png')}
                             />
                         </TouchableOpacity>
-                        <Text style={{marginLeft: 16, fontSize: 20, fontWeight: 'bold'}}> 
+                        <Text style={{marginLeft: 16, fontSize: 26,  fontWeight: 'bold'}}> 
                                 { qty }
                         </Text>
                         <TouchableOpacity onPress={() => setQty(prevQty => prevQty + 1)}>
@@ -183,40 +198,41 @@ const MenuDetail = ({ route, navigation}) => {
                     <View style={{flexDirection: 'row', 
                                 justifyContent: 'space-between', 
                                 backgroundColor: 'rgb(248, 248, 248)',
-                                minHeight: 50
+                                height: 58.5
                                 }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginLeft: 16}}>
-                            <Text style={{color: 'black', fontSize: 18,}}> Special Instruction </Text>
+                            <Text style={{color: 'black', fontSize: 18, lineHeight: 21}}> Special Instruction </Text>
                         </View>
                     </View>
-                    <View style={{borderWidth: 1, 
-                                    borderColor: 'grey', 
-                                    margin: 16,
+                    <View style={{ 
+                                    marginLeft: 16,
                                     borderRadius: 10,
                                     flexDirection: 'row', 
                                     justifyContent: 'flex-start', 
-                                    alignItems: 'flex-start'
+                                    alignItems: 'flex-start',
+                                    height: 85
                                     }} 
                     >
                         <TextInput
-                            style={{height: 100,  }}
                             underlineColorAndroid="transparent"
-                            placeholder="Special Instruction"
-                            placeholderTextColor="grey"
-                            numberOfLines={10}
+                            placeholder="Add a note (extra sauce, no onions, etc)"
+                            placeholderTextColor="black"
+                            style={{fontSize: 18, lineHeight: 21}}
+                            // numberOfLines={3}
                             multiline={true}
                         />
                     </View>
-                </ScrollView>
-                }
-            </View>
-            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+            <View style={{flexDirection: 'row', 
+                        justifyContent: 'center', 
+                        alignItems: 'center', 
+                        height: 122,
+                        }}>
                 <TouchableOpacity
                     style={{borderRadius: 10, 
                         backgroundColor: hasFilled ? 'rgb(255, 137, 85)' : 'rgb(178, 178, 178)', 
                         marginLeft: 16,
                         marginRight: 16,
-                        // marginTop: 16,
+                        height: 65,
                         padding: 10,
                         width: Dimensions.get('window').width - 50,
                         flexDirection: 'row',
@@ -229,11 +245,12 @@ const MenuDetail = ({ route, navigation}) => {
                         <Text style={[styles.buttonText, { marginLeft: 16 }]}>ADD TO BASKET</Text>
                         
                     </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-start'}}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
                         <Text style={[styles.buttonText, { marginRight: 16 }]}> 45.00 SAR</Text>
                     </View>
                 </TouchableOpacity>
             </View>
+            </ScrollView>
         </View>
     )
 };
@@ -250,13 +267,11 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end'
     },
     iconStyle: {
-        height: 50,
-        width: 50,
         position: 'absolute',
-        top: 0,
+        top: 30,
         bottom: 0,
         right: 0,
-        left: Dimensions.get('window').width - 50
+        left: Dimensions.get('window').width - 80
     },
     buttonText: {
         color: 'white',

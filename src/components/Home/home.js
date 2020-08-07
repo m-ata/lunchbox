@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import { View, Text, Image, StyleSheet, ScrollView, ImageBackground, TouchableOpacity } from 'react-native'
+import { View, Text, Image, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Dimensions } from 'react-native'
 
 const Home = ({ navigation }) => {
 
@@ -75,13 +75,13 @@ const styles = StyleSheet.create({
   cardStyle: {
     borderColor: '#B0A8A6',
     borderWidth: 1,
-    width: 400,
-    height: 250,
+    width: Dimensions.get('window').width - 30,
+    height: 240,
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 10
+    marginTop: 24,
+    // marginBottom: 10
   },
   backgroundImgStyle:{
     width: '100%',
@@ -98,12 +98,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Roboto',
     fontWeight: 'bold',
-    fontSize: 30,
-    marginTop: 10
+    fontSize: 26,
+    marginTop: 10,
+    lineHeight: 36
   },
   description: {
     color: 'white',
     fontFamily: 'Roboto',
-    fontSize: 15,
+    fontSize: 17,
+    lineHeight: 26
   }
 });

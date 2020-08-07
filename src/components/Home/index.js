@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./Home";
-import { Picker, Text } from 'react-native';
+import { Picker, Text, TouchableOpacity, Image } from 'react-native';
 import SignIn from "../Auth/SignIn";
 import Menus from "./menus";
 import MenuDetail from "./MenuDetail";
@@ -23,12 +23,13 @@ const MainStackNavigator = () => {
       <Stack.Screen name="Home" component={Home} options={() => {
          return {
           headerTitle: () => <Text
-          style={{  fontSize: 20,
+          style={{  fontSize: 23.5,
                     alignSelf: 'center', 
-                    color: 'white' 
+                    color: 'white',
+                    lineHeight: 27
                   }}
         >
-          Welcome to <Text style={{ fontWeight: 'bold'}}>TLB</Text>
+          <Text style={{ fontWeight: 'bold'}}> Welcome to TLB</Text>
         </Text>,
         headerStyle: {
           backgroundColor: 'rgb(255, 137, 85)'
@@ -38,7 +39,7 @@ const MainStackNavigator = () => {
       }} />
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="Menus" component={Menus}
-          options={() => {
+          options={({navigation}) => {
             return {
               headerTitle: () => <Picker    
                    style={{ height: 50, 
@@ -54,20 +55,25 @@ const MainStackNavigator = () => {
                 color: '#ffffff',
                 alignSelf: 'center'
               },
-              headerTintColor: '#ffffff',
+              // headerTintColor: '#ffffff',
+              headerLeft: () => <TouchableOpacity style={{marginLeft: 16}} onPress={() => navigation.goBack()}>
+              <Image
+                source={require('./../../../public/icons/back_icon.png')}
+              />
+            </TouchableOpacity>
               }
           }}
        />
        <Stack.Screen 
           name="MenuDetail" 
           component={MenuDetail}
-          options={{headerShown: false}}
+          options={{headerShown: false,}}
 
        />
        <Stack.Screen 
           name="Basket"
           component={BasketIndex}
-          options={() => {
+          options={({navigation}) => {
             return {
               headerStyle: {
                 backgroundColor: 'rgb(255, 137, 85)',
@@ -75,7 +81,13 @@ const MainStackNavigator = () => {
               headerTitle: () => <Text style={{  fontSize: 20,
                 alignSelf: 'center', 
                 color: 'white' 
-              }}>Your Basket</Text>
+              }}
+              >Your Basket</Text>,
+              headerLeft: () => <TouchableOpacity style={{marginLeft: 16}} onPress={() => navigation.goBack()}>
+              <Image
+                source={require('./../../../public/icons/back_icon.png')}
+              />
+            </TouchableOpacity>
             }
           }
           }

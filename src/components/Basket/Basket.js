@@ -38,25 +38,6 @@ const Basket = ({ navigation }) => {
         },
     ]
 
-    // const [panelProps, setPanelProps] = useState({
-    //     fullWidth: true,
-    //     openLarge: true,
-    //     showCloseButton: true,
-    //     onClose: () => closePanel(),
-    //     onPressCloseButton: () => closePanel(),
-    //     onlySmall: true
-    //     // ...or any prop you want
-    //   });
-    //   const [isPanelActive, setIsPanelActive] = useState(false);
-     
-    //   const openPanel = () => {
-    //     setIsPanelActive(true);
-    //   };
-     
-    //   const closePanel = () => {
-    //     setIsPanelActive(false);
-    //   };
-
     return (
         <View style={{flex: 1}} >
             <ScrollView keyboardShouldPersistTaps="handled">
@@ -229,7 +210,7 @@ const Basket = ({ navigation }) => {
                             flexDirection: 'row',
                             justifyContent: 'center',
                         }}
-                        // onPress={() => openPanel()}
+                        onPress={() => navigation.navigate('OrderPlace')}
                     >
                         {/* <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}> */}
                             <Text style={{ marginLeft: 16, 
@@ -240,9 +221,6 @@ const Basket = ({ navigation }) => {
                         {/* </View> */}
                     </TouchableOpacity>
                 </View>
-                {/* <SwipeablePanel {...panelProps} isActive={isPanelActive}>
-                    <SignUp />
-                </SwipeablePanel> */}
             </ScrollView>
         </View>
     )

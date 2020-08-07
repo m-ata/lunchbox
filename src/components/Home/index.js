@@ -6,6 +6,7 @@ import SignIn from "../Auth/SignIn";
 import Menus from "./menus";
 import MenuDetail from "./MenuDetail";
 import BasketIndex from "../Basket";
+import OrderPlace from "../Order/OrderPlace";
 
 const Stack = createStackNavigator();
 
@@ -91,6 +92,11 @@ const MainStackNavigator = () => {
             }
           }
           }
+       />
+       <Stack.Screen 
+          name="OrderPlace"
+          component={OrderPlace}
+          options={{headerShown: false,}}
        />
     </Stack.Navigator>
   );

@@ -136,7 +136,7 @@ const MenuDetail = ({ route, navigation}) => {
                                             />
                                             <Text style={{ fontSize: 18, 
                                                             lineHeight: 25,
-                                                            fontWeight: 'bold', 
+                                                            fontWeight: '600', 
                                                             color: c.isSelected ? 'rgb(23, 179, 158)' : 'black',
                                                             marginLeft: 8
                                                         }}> {c.name} </Text>

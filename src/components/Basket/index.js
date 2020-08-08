@@ -38,7 +38,7 @@ const BasketIndex = ( { navigation } ) => {
                                 }}
                 >
                     <TouchableOpacity onPress={() => setActiveTab('delivery')}>
-                        <Text style={{fontSize: 14, lineHeight: 23.5, color: 'black', fontWeight: 'bold'}}>
+                        <Text style={{fontSize: 18, lineHeight: 23.5, color: 'black', fontWeight: '600'}}>
                             Delivery
                         </Text>
                     </TouchableOpacity>
@@ -54,7 +54,7 @@ const BasketIndex = ( { navigation } ) => {
                         }}
                 >
                     <TouchableOpacity onPress={() => setActiveTab('pickup')}>
-                        <Text style={{fontSize: 14, lineHeight: 23.5, color: 'black', fontWeight: 'bold'}}>
+                        <Text style={{fontSize: 18, lineHeight: 23.5, color: 'black', fontWeight: '600'}}>
                             Pickup
                         </Text>
                     </TouchableOpacity>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ImageBackground, Dimensions } from 'react-native';
 
 const Menus = ({ navigation }) => {
 
@@ -12,7 +12,7 @@ const Menus = ({ navigation }) => {
     url: require('./../../../public/images/menu1.png')
     }, {
         name: 'Special Biryani Full',
-      description: 'Fries topped with melted cheese ...',
+      description: 'Fries topped with melted cheese ... Testing',
       price: '45.00',
       currency: 'SAR',
       url: require('./../../../public/images/menu2.png')
@@ -37,7 +37,7 @@ const Menus = ({ navigation }) => {
             <View style={styles.cardStyle}>
             <ImageBackground
               style={styles.backgroundImgStyle}
-              imageStyle={{ borderRadius: 20}}
+              imageStyle={{ borderRadius: 15}}
               source={require('./../../../public/images/main_menu.png')}
             >
               <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -80,35 +80,37 @@ const Menus = ({ navigation }) => {
             {
               menus.map((menu, i) => {
                 return (
-              <View style={styles.menuStyle} 
-              onStartShouldSetResponder={() => navigation.navigate('MenuDetail', {
-                menu: menu
-              })} 
-              >
-                <View style={{marginLeft: 16}}>
-                  <Text style={{fontSize: 20, color: 'black'}}> {menu.name} </Text>
-                  <Text style={{fontSize: 15, color: 'black', marginTop: 4, marginLeft: 8}}>
-                    { menu.description }
-                    </Text>
-                  <Text style={{fontWeight: 'bold', color: 'rgb(3, 160, 139)',  marginTop: 4, marginLeft: 8}}>
-                    { menu.price }  SAR
-                    </Text>
-                </View>
-                <View style={{width: 120, height: 100, marginLeft: 'auto', marginRight: 16 }}>
-                  <ImageBackground
-                    source={menu.url}
-                    style={{width: '100%', height: '100%'}}
-                    imageStyle={{ borderRadius: 20}}
-                  >
-                  </ImageBackground>
-                </View>
-                <View
-                  style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                  }}
-                />
-              </View>
+                  <TouchableOpacity onPress={() => navigation.navigate('MenuDetail', {
+                    menu: menu
+                  })}>
+                    <View style={styles.menuStyle}  
+                    >
+                      <View style={{marginLeft: 16}}>
+                        <Text style={{fontSize: 21, color: 'black', lineHeight: 23, fontWeight: '600'}}> {menu.name} </Text>
+                        <Text style={{fontSize: 18, lineHeight: 21, color: 'black', marginTop: 4, marginLeft: 8}}>
+                          { menu.description }
+                          </Text>
+                        <Text style={{fontWeight: 'bold', color: 'rgb(3, 160, 139)',  marginTop: 4, 
+                                      marginLeft: 8, fontSize: 17, lineHeight: 19.5}}>
+                          { menu.price }  SAR
+                          </Text>
+                      </View>
+                      <View style={{width: 120, height: 100, marginLeft: 'auto', marginRight: 16 }}>
+                        <ImageBackground
+                          source={menu.url}
+                          style={{width: '100%', height: '100%'}}
+                          imageStyle={{ borderRadius: 15}}
+                        >
+                        </ImageBackground>
+                      </View>
+                      <View
+                        style={{
+                          borderBottomColor: 'black',
+                          borderBottomWidth: 1,
+                        }}
+                      />
+                    </View>
+                  </TouchableOpacity>
                 )
               })
             }
@@ -130,9 +132,9 @@ const styles = StyleSheet.create({
     cardStyle: {
         borderColor: '#B0A8A6',
         borderWidth: 1,
-        width: 400,
-        height: 200,
-        borderRadius: 20,
+        width: Dimensions.get('window').width - 30,
+        height: 182,
+        borderRadius: 15,
         marginTop: 20,
       },
       backgroundImgStyle:{
@@ -152,28 +154,32 @@ const styles = StyleSheet.create({
         fontSize: 15,
       },
       selectedButtonStyle: {
-          borderRadius: 10,
+          borderRadius: 10.5,
           backgroundColor: 'rgb(255, 137, 85)',
           marginLeft: 16,
-          // width: 100,
+          // width: 102,
           alignItems: 'center',
           padding: 10,
+          height: 44
       },
       unselectedButtonStyle: {
-        borderRadius: 10,
+        borderRadius: 10.5,
         backgroundColor: 'rgb(242, 242, 242)',
         marginLeft: 16,
-        // width: 100,
+        // width: 102,
         alignItems: 'center',
         padding: 10,
+        height: 44
     },
     selectedText: {
         color: '#ffffff',
-        fontSize: 18
+        fontSize: 18,
+        lineHeight: 21
     },
     unselectedText: {
       color: '#000000',
-      fontSize: 18
+      fontSize: 18,
+      lineHeight: 21
   },
       menuStyle: {
         marginTop: 30,

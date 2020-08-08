@@ -1,5 +1,4 @@
 import React from 'react';
-import { Image, Text } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -8,9 +7,6 @@ import SplashScreen from './src/components/Splash/index.js';
 import TabNavigator from './src/components/Home/TabNavigation.js';
 
 const Stack = createStackNavigator();
-
-const activeTintLabelColor = '#f0a56c';
-const inactiveTintLabelColor = 'grey';
 
 const App = () => {
   return (

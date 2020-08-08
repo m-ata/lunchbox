@@ -36,7 +36,7 @@ const Home = ({ navigation }) => {
                   <View style={styles.cardStyle} >
                     <ImageBackground
                       style={styles.backgroundImgStyle}
-                      imageStyle={{ borderRadius: 20}}
+                      imageStyle={{ borderRadius: 15}}
                       source={r.image}
                     >
                       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: Dimensions.get('window').width - 30,
     height: 240,
-    borderRadius: 20,
+    borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 24,
@@ -91,21 +91,20 @@ const styles = StyleSheet.create({
   logoStyle: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 100,
-    height: 100
+    width: 84.5,
+    height: 84.5
   },
   title: {
     color: 'white',
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
     fontSize: 26,
     marginTop: 10,
-    lineHeight: 36
+    lineHeight: 36,
+    fontWeight: 'bold'
   },
   description: {
     color: 'white',
-    fontFamily: 'Roboto',
     fontSize: 17,
-    lineHeight: 26
+    lineHeight: 26,
+    fontWeight: '400'
   }
 });

@@ -96,8 +96,8 @@ const styles = StyleSheet.create({
         fontSize: 19.5,
         lineHeight: 25,
         color: 'rgb(255, 255, 255)',
-        marginTop: 16
-        // fontWeight: 'bold'
+        marginTop: 16,
+        fontWeight: '500'
     },
     thanks: {
         fontSize: 26,
@@ -108,7 +108,8 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: 'white',
-        fontSize: 16,
-        fontWeight: 'bold'
+        fontSize: 18,
+        fontWeight: 'bold',
+        lineHeight: 23
     }
 })

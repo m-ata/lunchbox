@@ -12,12 +12,17 @@ const OrderPlace =  ({ navigation }) => {
     
     return (
         <View style={styles.container} >
-            <View style={{opacity: 0.2, backgroundColor: 'rgb(0,0,0, 0.5)'}}>
+            <View>
                 <ImageBackground
-                        style={{height: '100%', width: '100%', resizeMode: 'cover'}}
+                        style={{height: '100%', width: '100%', resizeMode: 'cover', opacity: 1}}
                         source={require('./../../../public/images/order_place.png')}
                     >
-                        <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 'auto'}}>
+                        <ImageBackground
+                        style={{height: '100%', width: '100%', resizeMode: 'cover', opacity: 1}}
+                        source={require('./../../../public/images/empty_order_place.png')}
+                        >
+                        <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 'auto',
+                    }}>
                             <Image 
                                 source={require('./../../../public/icons/success.png')} 
                                 // style={styles.iconStyle}
@@ -60,6 +65,7 @@ const OrderPlace =  ({ navigation }) => {
                             </TouchableOpacity>
                             <Text style={{fontSize: 19.5, lineHeight: 27, color: 'white', marginTop: 16}}>Order More</Text>
                         </View>
+                        </ImageBackground>
                     </ImageBackground>
             </View>
     </View>

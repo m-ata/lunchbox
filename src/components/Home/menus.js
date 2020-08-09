@@ -147,14 +147,15 @@ const styles = StyleSheet.create({
       },
       title: {
         color: 'white',
-        fontFamily: 'Roboto',
         fontWeight: 'bold',
-        fontSize: 40,
+        fontSize: 33,
+        lineHeight: 40
       },
       description: {
         color: 'white',
         fontFamily: 'Roboto',
-        fontSize: 15,
+        fontSize: 11,
+        lineHeight: 14
       },
       selectedButtonStyle: {
           borderRadius: 10.5,

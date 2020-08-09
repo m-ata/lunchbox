@@ -6,8 +6,12 @@ import { View,
     ScrollView,
     StyleSheet,
     Image,
-    Dimensions
+    Dimensions,
+    Animated
 } from 'react-native';
+import SignIn from '../Auth/SignIn';
+import SignUp from '../Auth/SignUp';
+
 
 const Basket = ({ navigation }) => {
 
@@ -37,6 +41,30 @@ const Basket = ({ navigation }) => {
             qty: '2x'
         },
     ]
+
+    const [bounceValue, setBounceValue] = useState(new Animated.Value(100));
+    const [showLogin, setShowLogin] = useState(false);
+    const [showSignUp, setShowSignUp] = useState(false);
+    const [showHeader, setShowHeader] = useState(false);
+
+    const _toggleSubview = () => {    
+    
+        var toValue = Dimensions.get('window').height - 50;
+    
+        Animated.spring(
+          bounceValue,
+          {
+            toValue: toValue,
+            velocity: 3,
+            tension: 2,
+            friction: 8,
+          }
+        ).start();
+      }
+
+      const onLoginClose = () => {
+        setShowLogin(false)
+      }
 
     return (
         <View style={{flex: 1}} >
@@ -224,7 +252,10 @@ const Basket = ({ navigation }) => {
                             alignItems: 'center',
                             height: 65
                         }}
-                        onPress={() => navigation.navigate('OrderPlace')}
+                        onPress={() => {
+                            navigation.setParams({headerShown: showHeader});
+                            setShowHeader(!showHeader);
+                        }}
                     >
                         {/* <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}> */}
                             <Text style={{ marginLeft: 16, 
@@ -239,6 +270,14 @@ const Basket = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </ScrollView>
+            {
+                showLogin && <Animated.View
+                style={[styles.subView,
+                  {transform: [{translateY: bounceValue}]}]}
+              >
+                <SignIn onClose={onLoginClose} />
+              </Animated.View>
+            }
         </View>
     )
 };
@@ -263,5 +302,13 @@ const styles = StyleSheet.create({
         color: 'rgb(246, 117, 117)',
         marginTop: 16,
         lineHeight: 21
-    }
+    },
+    subView: {
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: "#FFFFFF",
+        height: Dimensions.get('window').height,
+      }
 })

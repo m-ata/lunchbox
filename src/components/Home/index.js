@@ -39,7 +39,8 @@ const MainStackNavigator = () => {
         headerTintColor: '#ffffff',
         }
       }} />
-      <Stack.Screen name="SignIn" component={SignIn} />
+      <Stack.Screen name="SignIn" component={SignIn} options={{headerShown: false,}}
+       />
       <Stack.Screen name="Menus" component={Menus}
           options={({navigation}) => {
             return {
@@ -50,8 +51,8 @@ const MainStackNavigator = () => {
                       width: 210,
                       alignSelf: 'center', 
                       color: 'white' ,
-                      fontSize: 18,
-                      lineHeight: 21
+                      fontSize: 14,
+                      lineHeight: 16
                     }}>
                 <Picker.Item  label="Al Murabba, Riyadh" value="riyadh" />
                 <Picker.Item label="Al Murabba, Makkah" value="makkah" />
@@ -65,6 +66,7 @@ const MainStackNavigator = () => {
               headerLeft: () => <TouchableOpacity style={{marginLeft: 16}} onPress={() => navigation.goBack()}>
               <Image
                 source={require('./../../../public/icons/back_icon.png')}
+                style={{width: 33, height: 33}}
               />
             </TouchableOpacity>
               }
@@ -79,11 +81,12 @@ const MainStackNavigator = () => {
        <Stack.Screen 
           name="Basket"
           component={BasketIndex}
-          options={({navigation}) => {
+          options={({navigation, route}) => {
             return {
               headerStyle: {
                 backgroundColor: 'rgb(255, 137, 85)',
               },
+              headerShown: route.params.isHeaderVisible,
               headerTitle: () => <>
               <Text style={{  fontSize: 18,
                 lineHeight: 18,

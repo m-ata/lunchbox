@@ -239,7 +239,7 @@ const MenuDetail = ({ route, navigation}) => {
                         justifyContent: 'space-between',
                     }}
                     disabled={hasFilled ? false: true}
-                    onPress={() => navigation.navigate('Basket') }
+                    onPress={() => navigation.navigate('Basket', {isHeaderVisible: true}) }
                 >
                     <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center'}}>
                         <Text style={[styles.buttonText, { marginLeft: 16 }]}>ADD TO BASKET</Text>

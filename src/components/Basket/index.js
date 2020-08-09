@@ -7,7 +7,7 @@ import { View,
 import Basket from './Basket';
 import Pickup from './Pickup';
 
-const BasketIndex = ( { navigation } ) => {
+const BasketIndex = ( { navigation, route } ) => {
 
     const [activeTab, setActiveTab] = useState('delivery');
 

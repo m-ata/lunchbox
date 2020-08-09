@@ -51,7 +51,7 @@ const Menus = ({ navigation }) => {
             </ImageBackground>
           </View>
           </View>
-          <View style={{flexDirection: "row" ,marginTop: 20, justifyContent: 'space-between' }}>
+          <View style={{flexDirection: "row" ,marginTop: 20, justifyContent: 'flex-start' }}>
             <TouchableOpacity
               style={styles.selectedButtonStyle}
               // onPress={onPress}
@@ -80,37 +80,40 @@ const Menus = ({ navigation }) => {
             {
               menus.map((menu, i) => {
                 return (
+                  <>
                   <TouchableOpacity onPress={() => navigation.navigate('MenuDetail', {
                     menu: menu
                   })}>
-                    <View style={styles.menuStyle}  
-                    >
-                      <View style={{marginLeft: 16}}>
-                        <Text style={{fontSize: 21, color: 'black', lineHeight: 23, fontWeight: '600'}}> {menu.name} </Text>
-                        <Text style={{fontSize: 18, lineHeight: 21, color: 'black', marginTop: 4, marginLeft: 8}}>
-                          { menu.description }
-                          </Text>
-                        <Text style={{fontWeight: 'bold', color: 'rgb(3, 160, 139)',  marginTop: 4, 
-                                      marginLeft: 8, fontSize: 17, lineHeight: 19.5}}>
-                          { menu.price }  SAR
-                          </Text>
+                      <View style={styles.menuStyle}  
+                      >
+                        <View style={{marginLeft: 16}}>
+                          <Text style={{fontSize: 16, color: 'black', lineHeight: 18, fontWeight: '700'}}> {menu.name} </Text>
+                          <Text style={{fontSize: 14, lineHeight: 16, color: 'black', marginTop: 4, marginLeft: 8}}>
+                            { menu.description }
+                            </Text>
+                          <Text style={{fontWeight: 'bold', color: 'rgb(3, 160, 139)',  marginTop: 4, 
+                                        marginLeft: 8, fontSize: 13, lineHeight: 15}}>
+                            { menu.price }  SAR
+                            </Text>
+                        </View>
+                        <View style={{width: 85, height: 70, marginLeft: 'auto', marginRight: 16 }}>
+                          <ImageBackground
+                            source={menu.url}
+                            style={{width: '100%', height: '100%'}}
+                            imageStyle={{ borderRadius: 15}}
+                          >
+                          </ImageBackground>
+                        </View>
                       </View>
-                      <View style={{width: 120, height: 100, marginLeft: 'auto', marginRight: 16 }}>
-                        <ImageBackground
-                          source={menu.url}
-                          style={{width: '100%', height: '100%'}}
-                          imageStyle={{ borderRadius: 15}}
-                        >
-                        </ImageBackground>
-                      </View>
-                      <View
-                        style={{
-                          borderBottomColor: 'black',
-                          borderBottomWidth: 1,
-                        }}
-                      />
-                    </View>
-                  </TouchableOpacity>
+                    </TouchableOpacity>
+                    <View
+                    style={{
+                      borderBottomColor: 'black',
+                      borderBottomWidth: 0.5,
+                      marginTop: 16
+                    }}
+                  />
+                  </>
                 )
               })
             }
@@ -133,7 +136,7 @@ const styles = StyleSheet.create({
         borderColor: '#B0A8A6',
         borderWidth: 1,
         width: Dimensions.get('window').width - 30,
-        height: 182,
+        height: 140,
         borderRadius: 15,
         marginTop: 20,
       },
@@ -160,32 +163,30 @@ const styles = StyleSheet.create({
           // width: 102,
           alignItems: 'center',
           padding: 10,
-          height: 44
+          height: 34
       },
       unselectedButtonStyle: {
         borderRadius: 10.5,
         backgroundColor: 'rgb(242, 242, 242)',
         marginLeft: 16,
-        // width: 102,
         alignItems: 'center',
         padding: 10,
-        height: 44
+        height: 34,
     },
     selectedText: {
         color: '#ffffff',
-        fontSize: 18,
-        lineHeight: 21
+        fontSize: 14,
+        lineHeight: 16
     },
     unselectedText: {
       color: '#000000',
-      fontSize: 18,
-      lineHeight: 21
+      fontSize: 14,
+      lineHeight: 16
   },
       menuStyle: {
         marginTop: 30,
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
-        height: 100
       }
 })

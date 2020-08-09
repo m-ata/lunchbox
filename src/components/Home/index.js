@@ -81,6 +81,7 @@ const MainStackNavigator = () => {
        <Stack.Screen 
           name="Basket"
           component={BasketIndex}
+          initialParams={{isHeaderVisible: true}}
           options={({navigation, route}) => {
             return {
               headerStyle: {

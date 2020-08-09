@@ -46,6 +46,7 @@ const Basket = ({ navigation }) => {
     const [showLogin, setShowLogin] = useState(false);
     const [showSignUp, setShowSignUp] = useState(false);
     const [showHeader, setShowHeader] = useState(false);
+    const [isLoggedIn, setLoggedIn] = useState(false);
 
     const _toggleSubview = () => {    
     
@@ -63,7 +64,16 @@ const Basket = ({ navigation }) => {
       }
 
       const onLoginClose = () => {
-        setShowLogin(false)
+        setShowLogin(false);
+        navigation.setParams({isHeaderVisible: showHeader});
+        setShowHeader(!showHeader);
+      }
+
+      const onLoggedIn = () => {
+        setLoggedIn(true);
+        setShowLogin(false);
+        navigation.setParams({isHeaderVisible: showHeader});
+        setShowHeader(!showHeader);
       }
 
     return (
@@ -255,8 +265,13 @@ const Basket = ({ navigation }) => {
                             height: 50
                         }}
                         onPress={() => {
-                            navigation.setParams({headerShown: showHeader});
+                            if(isLoggedIn) {
+                                navigation.navigate('OrderPlace')
+                            } else {
+                                navigation.setParams({isHeaderVisible: showHeader});
                             setShowHeader(!showHeader);
+                            setShowLogin(true)
+                            }
                         }}
                     >
                         {/* <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}> */}
@@ -278,7 +293,7 @@ const Basket = ({ navigation }) => {
                 style={[styles.subView,
                   {transform: [{translateY: bounceValue}]}]}
               >
-                <SignIn onClose={onLoginClose} />
+                <SignIn onClose={onLoginClose} onLoggedIn={onLoggedIn} />
               </Animated.View>
             }
         </View>

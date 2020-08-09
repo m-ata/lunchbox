@@ -25,13 +25,13 @@ const MainStackNavigator = () => {
       <Stack.Screen name="Home" component={Home} options={() => {
          return {
           headerTitle: () => <Text
-          style={{  fontSize: 23.5,
+          style={{  
                     alignSelf: 'center', 
                     color: 'white',
-                    lineHeight: 27
+                   
                   }}
         >
-          <Text style={{ fontWeight: 'bold'}}> Welcome to TLB</Text>
+          <Text style={{ alignSelf: 'center',  fontWeight: 'bold', height: 21, width: 132, fontSize: 18, lineHeight: 21}}> Welcome to TLB</Text>
         </Text>,
         headerStyle: {
           backgroundColor: 'rgb(255, 137, 85)'

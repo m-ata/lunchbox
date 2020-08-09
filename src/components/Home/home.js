@@ -75,8 +75,8 @@ const styles = StyleSheet.create({
   cardStyle: {
     borderColor: '#B0A8A6',
     borderWidth: 1,
-    width: Dimensions.get('window').width - 30,
-    height: 240,
+    width: 340,
+    height: 185,
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
@@ -91,20 +91,20 @@ const styles = StyleSheet.create({
   logoStyle: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 84.5,
-    height: 84.5
+    width: 65,
+    height: 65
   },
   title: {
     color: 'white',
-    fontSize: 26,
+    fontSize: 20,
     marginTop: 10,
-    lineHeight: 36,
+    lineHeight: 28,
     fontWeight: 'bold'
   },
   description: {
     color: 'white',
-    fontSize: 17,
-    lineHeight: 26,
+    fontSize: 13,
+    lineHeight: 20,
     fontWeight: '400'
   }
 });

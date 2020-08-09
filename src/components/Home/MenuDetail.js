@@ -58,7 +58,7 @@ const MenuDetail = ({ route, navigation}) => {
     return(
         <View style={styles.container}>
             <ScrollView keyboardShouldPersistTaps="handled" >
-            <View style={{height: 264}}>
+            <View style={{height: 203}}>
                 <ImageBackground
                     style={{height: '100%', width: '100%'}}
                     source={menu.url}
@@ -73,25 +73,25 @@ const MenuDetail = ({ route, navigation}) => {
                 </ImageBackground>
             </View>
             <View style={{marginLeft: 16, marginTop: 16}}>
-                    <View style={{flexDirection:'row', lineHeight: 18,}}>
-                        <Text style={{fontSize: 21,   fontWeight: 'bold', color: 'black'}}> {menu.name} </Text>
-                        <Text style={{fontSize: 15.6, marginTop: 4, marginLeft: -4 }} > - </Text>
-                        <Text style={{fontSize: 15.6, marginTop: 4 }} >KCAL 800 </Text>
+                    <View style={{flexDirection:'row', }}>
+                        <Text style={{fontSize: 16,  fontWeight: '700', color: 'black'}}> {menu.name} </Text>
+                        <Text style={{fontSize: 12, color: '#898989', marginTop: 4, marginLeft: -4, lineHeight: 14, fontWeight: '700' }} > - </Text>
+                        <Text style={{fontSize: 12, color: '#898989', marginTop: 4, lineHeight: 16, fontWeight: '700' }} >KCAL 800 </Text>
                     </View>
-                    <Text style={{fontSize: 16.9, marginTop: 8, lineHeight: 26}}> {menu.description} </Text>
+                    <Text style={{fontSize: 13, marginTop: 8, lineHeight: 20}}> {menu.description} </Text>
             </View>
             <View style={{flexDirection: 'row', 
                                 justifyContent: 'space-between', 
                                 backgroundColor: 'rgb(248, 248, 248)',
-                                height: 58.5,
+                                height: 45,
                                 marginTop: 16
                                 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginLeft: 16}}>
-                <Text style={{color: 'black', fontSize: 19.5, lineHeight: 23.5}}> Your Choices </Text>
+                <Text style={{color: 'black', fontSize: 15, lineHeight: 18, fontWeight: '500'}}> Your Choices </Text>
                 <TouchableOpacity onPress={() => setShowChoices(!showChoices)}>
                     <Image 
                         source={require('./../../../public/icons/arrow_up.png')}
-                        style={{marginLeft: 8}}
+                        style={{marginLeft: 8, width: 12, height: 7.7}}
                     />
                 </TouchableOpacity>
                 </View>
@@ -103,15 +103,15 @@ const MenuDetail = ({ route, navigation}) => {
                     <TouchableOpacity 
                         style={{
                             backgroundColor: 'rgb(23, 179, 158)',
-                            borderRadius: 6.5,
+                            borderRadius: 5,
                             alignItems: 'center',
                             justifyContent: 'center',
-                            width: 78.6,
-                            height: 28.6,
+                            width: 60.5,
+                            height: 22,
                             marginRight: 16
                         }}
                     >
-                        <Text style={{color: 'white', fontSize: 12, lineHeight: 14}}> REQUIRED </Text>
+                        <Text style={{color: 'white', fontSize: 9, lineHeight: 11, fontWeight: '700',}}> REQUIRED </Text>
                     </TouchableOpacity>
                 </View>
                 </View>
@@ -133,9 +133,10 @@ const MenuDetail = ({ route, navigation}) => {
                                             <Image
                                             source={c.isSelected ? require('./../../../public/icons/radio_selected.png') :
                                              require('./../../../public/icons/radio.png')}
+                                             style={{width: 20, height: 20}}
                                             />
-                                            <Text style={{ fontSize: 18, 
-                                                            lineHeight: 25,
+                                            <Text style={{ fontSize: 14, 
+                                                            lineHeight: 19,
                                                             fontWeight: '600', 
                                                             color: c.isSelected ? 'rgb(23, 179, 158)' : 'black',
                                                             marginLeft: 8
@@ -145,8 +146,8 @@ const MenuDetail = ({ route, navigation}) => {
                                                         justifyContent: 'flex-end',
                                                         alignItems: 'center',
                                                         marginRight: 16,
-                                                        fontSize: 17, 
-                                                        lineHeight: 26,
+                                                        fontSize: 13, 
+                                                        lineHeight: 20,
                                                         color: 'black'
                                                         }}>
                                             <Text>+ {c.price} {c.currency} </Text>
@@ -167,41 +168,41 @@ const MenuDetail = ({ route, navigation}) => {
                 <View style={{flexDirection: 'row', 
                                 justifyContent: 'space-between', 
                                 backgroundColor: 'rgb(248, 248, 248)',
-                                height: 58.5,
+                                height: 45,
                                 marginTop: showChoices ? 0 :  16
                                 }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginLeft: 16}}>
-                            <Text style={{color: 'black', fontSize: 18,}}> How many ? </Text>
+                            <Text style={{color: 'black', fontSize: 14, lineHeight: 16, fontWeight: '500'}}> How many ? </Text>
                         </View>
                 </View>
                     <View style={{flexDirection: 'row', 
                         justifyContent: 'center', 
                         alignItems: 'center',
                         margin: 24
-                        // minHeight: 100
                         }}>
                         <TouchableOpacity onPress={() => setQty(prevQty => prevQty - 1)}>
                             <Image
                                 source={require('./../../../public/icons/minus.png')}
+                                style={{height: 40, width: 40}}
                             />
                         </TouchableOpacity>
-                        <Text style={{marginLeft: 16, fontSize: 26,  fontWeight: 'bold'}}> 
+                        <Text style={{marginLeft: 20, fontSize: 16,  fontWeight: 'bold'}}> 
                                 { qty }
                         </Text>
                         <TouchableOpacity onPress={() => setQty(prevQty => prevQty + 1)}>
                             <Image
                                 source={require('./../../../public/icons/plus.png')}
-                                style={{ marginLeft: 16}}
+                                style={{ marginLeft: 16, height: 40, width: 40}}
                             />
                         </TouchableOpacity>
                     </View>
                     <View style={{flexDirection: 'row', 
                                 justifyContent: 'space-between', 
                                 backgroundColor: 'rgb(248, 248, 248)',
-                                height: 58.5
+                                height: 45
                                 }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginLeft: 16}}>
-                            <Text style={{color: 'black', fontSize: 18, lineHeight: 21}}> Special Instruction </Text>
+                            <Text style={{color: 'black', fontSize: 14, lineHeight: 16, fontWeight: '500'}}> Special Instruction </Text>
                         </View>
                     </View>
                     <View style={{ 
@@ -210,14 +211,14 @@ const MenuDetail = ({ route, navigation}) => {
                                     flexDirection: 'row', 
                                     justifyContent: 'flex-start', 
                                     alignItems: 'flex-start',
-                                    height: 85
+                                    height: 60
                                     }} 
                     >
                         <TextInput
                             underlineColorAndroid="transparent"
                             placeholder="Add a note (extra sauce, no onions, etc)"
                             placeholderTextColor="black"
-                            style={{fontSize: 18, lineHeight: 21}}
+                            style={{fontSize: 14, lineHeight: 16}}
                             // numberOfLines={3}
                             multiline={true}
                         />
@@ -229,10 +230,10 @@ const MenuDetail = ({ route, navigation}) => {
                         }}>
                 <TouchableOpacity
                     style={{borderRadius: 10, 
-                        backgroundColor: hasFilled ? 'rgb(255, 137, 85)' : 'rgb(178, 178, 178)', 
+                        backgroundColor: hasFilled ? '#ff8955' : '#b2b2b2', 
                         marginLeft: 16,
                         marginRight: 16,
-                        height: 65,
+                        height: 50,
                         padding: 10,
                         width: Dimensions.get('window').width - 50,
                         flexDirection: 'row',
@@ -271,11 +272,14 @@ const styles = StyleSheet.create({
         top: 30,
         bottom: 0,
         right: 0,
-        left: Dimensions.get('window').width - 80
+        left: Dimensions.get('window').width - 80,
+        width: 38,
+        height: 38
     },
     buttonText: {
         color: 'white',
-        fontSize: 16,
-        fontWeight: 'bold'
+        fontSize: 15,
+        fontWeight: 'bold',
+        lineHeight: 18
     }
 })

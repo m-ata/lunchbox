@@ -88,15 +88,15 @@ const MainStackNavigator = () => {
               },
               headerShown: route.params.isHeaderVisible,
               headerTitle: () => <>
-              <Text style={{  fontSize: 18,
-                lineHeight: 18,
+              <Text style={{  fontSize: 14,
+                lineHeight: 16,
                 alignSelf: 'center', 
                 color: 'white' ,
-                fontWeight: '400'
+                fontWeight: '600'
               }}
               >Your Basket</Text>
-              <Text style={{  fontSize: 15.5,
-                lineHeight: 21,
+              <Text style={{  fontSize: 12,
+                lineHeight: 14,
                 alignSelf: 'center', 
                 color: 'white' ,
                 fontWeight: '600'
@@ -106,6 +106,7 @@ const MainStackNavigator = () => {
               headerLeft: () => <TouchableOpacity style={{marginLeft: 16}} onPress={() => navigation.goBack()}>
               <Image
                 source={require('./../../../public/icons/back_icon.png')}
+                style={{height: 33, width: 33}}
               />
             </TouchableOpacity>
             }

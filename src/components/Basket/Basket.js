@@ -69,17 +69,17 @@ const Basket = ({ navigation }) => {
     return (
         <View style={{flex: 1}} >
             <ScrollView keyboardShouldPersistTaps="handled">
-                    <View style={{height: 280, marginTop: 16}}>
+                    <View style={{height: 250, marginTop: 16}}>
                         {
                             basket.map((b, i) => {
                                 return (
                                     <>
                                         <View style={{flexDirection: 'row'}}>
                                             <View style={{margin: 16}}>
-                                                <Text style={{fontSize: 19.5, 
+                                                <Text style={{fontSize: 15, 
                                                             fontWeight: 'bold',  
                                                             color: 'rgb(23, 179, 158)',
-                                                            lineHeight: 23.5
+                                                            lineHeight: 18
                                                         }} 
                                                 > 
                                                     {b.qty} 
@@ -87,15 +87,15 @@ const Basket = ({ navigation }) => {
                                                 
                                             </View>
                                             <View style={{marginTop: 16}}>
-                                                <Text style={{fontSize: 19.5, 
-                                                            fontWeight: '600', 
+                                                <Text style={{fontSize: 15, 
+                                                            fontWeight: '700', 
                                                             color: 'black',
-                                                            lineHeight: 23.5
+                                                            lineHeight: 18
                                                         }}
                                                             > {b.name} </Text>
-                                                <Text style={{fontSize: 17, 
+                                                <Text style={{fontSize: 13, 
                                                             color: 'black', 
-                                                            lineHeight: 26}}> {b.description} </Text>
+                                                            lineHeight: 20}}> {b.description} </Text>
                                             </View>
                                             <View style={{ marginLeft: 'auto', marginRight: 16, marginTop: 16 }}>
                                                 <Text 
@@ -106,7 +106,9 @@ const Basket = ({ navigation }) => {
                                                     b.discount !== '0.00' && <View 
                                                     style={{borderWidth: 1, 
                                                             borderColor: 'rgb(175, 175, 175)',
-                                                            marginTop: -12
+                                                            marginTop: -9,
+                                                            width: 61,
+                                                            marginLeft: 4
                                                             }}>
                                                     </View>
                                                 }
@@ -134,7 +136,7 @@ const Basket = ({ navigation }) => {
                 <View style={{flexDirection: 'row', 
                                     justifyContent: 'space-between', 
                                     backgroundColor: 'rgb(248, 248, 248)',
-                                    height: 80
+                                    height: 61
                                     }}>
                             <View 
                                 style={{ flexDirection: 'row', 
@@ -145,11 +147,11 @@ const Basket = ({ navigation }) => {
                                 <Image
                                     source={require('./../../../public/icons/wallet.png')}
                                     style={{
-                                        height: 23.4,
-                                        width: 34.5
+                                        height: 18,
+                                        width: 26.5
                                     }}
                                 />
-                                <Text style={{color: 'black', lineHeight: 21, fontSize: 18, fontWeight: '600', marginLeft: 8}}> 
+                                <Text style={{color: 'black', lineHeight: 16, fontSize: 14, fontWeight: '700', marginLeft: 8}}> 
                                     Cash on Delivery 
                                 </Text>
                             </View>
@@ -160,11 +162,11 @@ const Basket = ({ navigation }) => {
                                         marginLeft: 16}}
                             >
                                 <Text style={{color: 'black', 
-                                                fontSize: 15.5, 
+                                                fontSize: 12, 
                                                 fontWeight: 'bold', 
                                                 marginRight: 16,
                                                 color: 'rgb(23, 179, 158)',
-                                                lineHeight: 21,
+                                                lineHeight: 16,
                                                 height: 18,
                                                 width: 65
                                             }}> 
@@ -174,26 +176,26 @@ const Basket = ({ navigation }) => {
                 </View>
                 <View style={{flexDirection: 'row'}}>
                     <View style={{marginLeft: 16, marginTop: 16}}>
-                        <Text style={{fontSize: 18, fontWeight: '500', color: 'black', lineHeight: 26}}> Order Total</Text> 
+                        <Text style={{fontSize: 14, fontWeight: '600', color: 'black', lineHeight: 20}}> Order Total</Text> 
                     </View>
                     <View style={{marginRight: 16, marginLeft: 'auto', marginTop: 16}}>
-                        <Text style={{fontSize: 18, color: 'black', lineHeight: 21, fontWeight: '500'}}> 50.00 SAR</Text>
+                        <Text style={{fontSize: 14, color: 'black', lineHeight: 16, fontWeight: '600'}}> 50.00 SAR</Text>
                     </View>
                 </View>
                 <View style={{flexDirection: 'row'}}>
                     <View style={{marginLeft: 16, marginTop: 8}}>
-                        <Text style={{fontSize: 18, fontWeight: '500', color: 'black', lineHeight: 26}}> Delivery Fees</Text> 
+                        <Text style={{fontSize: 14, fontWeight: '600', color: 'black', lineHeight: 20}}> Delivery Fees</Text> 
                     </View>
                     <View style={{marginRight: 16, marginLeft: 'auto', marginTop: 8}}>
-                        <Text style={{fontSize: 18, color: 'black', lineHeight: 21, fontWeight: '500'}}> 15.00 SAR</Text>
+                        <Text style={{fontSize: 14, color: 'black', lineHeight: 16, fontWeight: '600'}}> 15.00 SAR</Text>
                     </View>
                 </View>
                 <View style={{flexDirection: 'row'}}>
                     <View style={{marginLeft: 16, marginTop: 8}}>
-                        <Text style={{fontSize: 18, fontWeight: '500', color: 'black', lineHeight: 26}}> VAT (15%)</Text> 
+                        <Text style={{fontSize: 14, fontWeight: '600', color: 'black', lineHeight: 20}}> VAT (15%)</Text> 
                     </View>
                     <View style={{marginRight: 16, marginLeft: 'auto', marginTop: 8}}>
-                        <Text style={{fontSize: 18, color: 'black', lineHeight: 21, fontWeight: '500'}}> 15.00 SAR</Text>
+                        <Text style={{fontSize: 14, color: 'black', lineHeight: 16, fontWeight: '600'}}> 15.00 SAR</Text>
                     </View>
                 </View>
                 <View 
@@ -202,31 +204,31 @@ const Basket = ({ navigation }) => {
                                     marginTop: 24
                                 }}>
                 </View>
-                <View style={{flexDirection: 'row', marginTop: 16}}>
+                <View style={{flexDirection: 'row', marginTop: 8}}>
                     <View style={{marginLeft: 16, marginTop: 8}}>
-                        <Text style={{fontSize: 23, fontWeight: 'bold', color: 'black', lineHeight: 26}}> Total</Text> 
+                        <Text style={{fontSize: 18, fontWeight: 'bold', color: 'black', lineHeight: 20}}> Total</Text> 
                     </View>
                     <View style={{marginRight: 16, marginLeft: 'auto', marginTop: 8}}>
-                        <Text style={{fontSize: 23, color: 'black', fontWeight: 'bold', lineHeight: 27}}> 65.00 SAR</Text>
+                        <Text style={{fontSize: 18, color: 'black', fontWeight: 'bold', lineHeight: 21}}> 65.00 SAR</Text>
                     </View>
                 </View>
                 <View 
                         style={{borderWidth: 0.5, 
                                     borderColor: 'rgb(175, 175, 175)',
-                                    marginTop: 24
+                                    marginTop: 16
                                 }}>
                 </View>
                 <View style={{flexDirection: 'row', marginTop: 16}}>
                     <View style={{marginLeft: 16, marginTop: 8}}>
-                        <Text style={{fontSize: 18, fontWeight: '600', color: 'black', lineHeight: 21}}> Special Instruction</Text>
-                        <Text style={{fontSize: 17, color: 'black', lineHeight: 26, fontWeight: '400'}}> Eg. Please don't ring the bell</Text>
+                        <Text style={{fontSize: 14, fontWeight: '600', color: 'black', lineHeight: 16}}> Special Instruction</Text>
+                        <Text style={{fontSize: 13, color: 'black', lineHeight: 20,}}> Eg. Please don't ring the bell</Text>
                     </View>
                     <View style={{marginRight: 16, marginLeft: 'auto', marginTop: 8}}>
                         <Image
                             source={require('./../../../public/icons/message.png')}
                             style={{
-                                width: 31,
-                                height: 28
+                                width: 23.9,
+                                height: 22
                             }}
                         />
                     </View>
@@ -239,8 +241,8 @@ const Basket = ({ navigation }) => {
                 </View>
                 <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                     <TouchableOpacity
-                        style={{borderRadius: 13, 
-                            backgroundColor:'rgb(255, 137, 85)', 
+                        style={{borderRadius: 10, 
+                            backgroundColor:'#ff8955', 
                             marginLeft: 16,
                             marginRight: 16,
                             marginTop: 24,
@@ -250,7 +252,7 @@ const Basket = ({ navigation }) => {
                             flexDirection: 'row',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            height: 65
+                            height: 50
                         }}
                         onPress={() => {
                             navigation.setParams({headerShown: showHeader});
@@ -260,11 +262,12 @@ const Basket = ({ navigation }) => {
                         {/* <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}> */}
                             <Text style={{ marginLeft: 16, 
                                             color: 'white',
-                                            fontSize: 18,
-                                            lineHeight: 23.5,
+                                            fontSize: 14,
+                                            lineHeight: 18,
                                             fontWeight: 'bold',
-                                            height: 21,
-                                            width: 92 }}>CONTINUE</Text>
+                                            // height: 16,
+                                            // width: 92 
+                                            }}>CONTINUE</Text>
                             
                         {/* </View> */}
                     </TouchableOpacity>
@@ -286,22 +289,22 @@ export default Basket;
 
 const styles = StyleSheet.create({
     activePrice: {
-        fontSize: 18,
+        fontSize: 14,
         fontWeight: 'bold',
         color: 'black',
-        lineHeight: 21
+        lineHeight: 16
     },
     nonActivePrice: {
-        fontSize: 17,
-        color: 'rgb(175, 175, 175)',
-        lineHeight: 19.5
+        fontSize: 13,
+        color: '#afafaf',
+        lineHeight: 15,
     },
     discountedPrice: {
-        fontSize: 18,
+        fontSize: 15,
         fontWeight: 'bold',
-        color: 'rgb(246, 117, 117)',
+        color: '#f67575',
         marginTop: 16,
-        lineHeight: 21
+        lineHeight: 16
     },
     subView: {
         position: "absolute",

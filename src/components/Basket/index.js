@@ -21,10 +21,10 @@ const BasketIndex = ( { navigation, route } ) => {
                             alignItems: 'center', 
                             borderWidth: 1,
                             marginTop: 16,
-                            height: 50,
+                            height: 38.1,
                             marginLeft: 16,
                             marginRight: 16,
-                            borderRadius: 10,
+                            borderRadius: 7,
                             backgroundColor: 'rgb(240, 240, 240)'
                         }}>
                 <View style={{justifyContent: 'center', 
@@ -33,12 +33,12 @@ const BasketIndex = ( { navigation, route } ) => {
                                 width: '50%',
                                 backgroundColor: activeTab === 'delivery' ? 'white' : 'rgb(240, 240, 240)', 
                                 margin: 8,
-                                borderRadius: 10,
-                                height: 40
+                                borderRadius: 6,
+                                height: 30.5
                                 }}
                 >
                     <TouchableOpacity onPress={() => setActiveTab('delivery')}>
-                        <Text style={{fontSize: 18, lineHeight: 23.5, color: 'black', fontWeight: '600'}}>
+                        <Text style={{fontSize: 14, lineHeight: 18, color: 'black', fontWeight: '700'}}>
                             Delivery
                         </Text>
                     </TouchableOpacity>
@@ -49,12 +49,12 @@ const BasketIndex = ( { navigation, route } ) => {
                                 width: '40%',
                                 backgroundColor: activeTab === 'pickup' ? 'white' : 'rgb(240, 240, 240)', 
                                 margin: 8,
-                                borderRadius: 10,
-                                height: 40
+                                borderRadius: 6,
+                                height: 30.5
                         }}
                 >
                     <TouchableOpacity onPress={() => setActiveTab('pickup')}>
-                        <Text style={{fontSize: 18, lineHeight: 23.5, color: 'black', fontWeight: '600'}}>
+                        <Text style={{fontSize: 14, lineHeight: 18, color: 'black', fontWeight: '700'}}>
                             Pickup
                         </Text>
                     </TouchableOpacity>

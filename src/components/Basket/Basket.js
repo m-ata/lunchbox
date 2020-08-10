@@ -48,21 +48,6 @@ const Basket = ({ navigation }) => {
     const [showHeader, setShowHeader] = useState(false);
     const [isLoggedIn, setLoggedIn] = useState(false);
 
-    const _toggleSubview = () => {    
-    
-        var toValue = Dimensions.get('window').height - 50;
-    
-        Animated.spring(
-          bounceValue,
-          {
-            toValue: toValue,
-            velocity: 3,
-            tension: 2,
-            friction: 8,
-          }
-        ).start();
-      }
-
       const onLoginClose = () => {
         setShowLogin(false);
         navigation.setParams({isHeaderVisible: showHeader});
@@ -74,6 +59,11 @@ const Basket = ({ navigation }) => {
         setShowLogin(false);
         navigation.setParams({isHeaderVisible: showHeader});
         setShowHeader(!showHeader);
+      }
+
+      const handleSignUpRedirect = () => {
+        setShowLogin(false);
+        setShowSignUp(true);
       }
 
     return (
@@ -293,7 +283,15 @@ const Basket = ({ navigation }) => {
                 style={[styles.subView,
                   {transform: [{translateY: bounceValue}]}]}
               >
-                <SignIn onClose={onLoginClose} onLoggedIn={onLoggedIn} />
+                <SignIn onClose={onLoginClose} onLoggedIn={onLoggedIn} handleSignUp={handleSignUpRedirect} />
+              </Animated.View>
+            }
+            {
+                showSignUp && <Animated.View
+                style={[styles.subView,
+                  {transform: [{translateY: bounceValue}]}]}
+              >
+                <SignUp  />
               </Animated.View>
             }
         </View>

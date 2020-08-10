@@ -14,7 +14,7 @@
 
   const SignIn = (props) => {
 
-    const { onClose, onLoggedIn} = props
+    const { onClose, onLoggedIn, handleSignUp} = props
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false)
@@ -177,7 +177,7 @@
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                 <Text style={{fontSize: 14, lineHeight: 16, color: 'black', fontWeight: '600'}}>Don't Have Account ?</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={handleSignUp}>
                   <Text style={{fontSize: 14, lineHeight: 16, color: '#17b39e', fontWeight: '600', marginLeft: 8}}>Register Now</Text>
                 </TouchableOpacity>
             </View>

@@ -141,39 +141,39 @@
                   <Image source={require('./../../../public/icons/facebook.png')}
                       style={{width: 24, height: 24}}
                   />
-                  <Text style={styles.socialBtnText}>SIGN UP WITH FACEBOOK</Text>
+                  <Text style={styles.socialBtnText}>SIGN IN WITH FACEBOOK</Text>
                 </View>
             </TouchableOpacity>
             </View>
             <View style={styles.SectionStyle}>
-            <TouchableOpacity
-              style={{
-                        height: 48,
-                        padding: 10,
-                        width: '100%',
-                        backgroundColor: '#fcfcfc',
-                        color: '#FFFFFF',
-                        borderRadius: 6,
-                        justifyContent: 'center',
-                        borderColor: '#c4c4c4',
-                        borderWidth: 1
-              }}
-              activeOpacity={0.5}
-              // onPress={handleSubmitButton}
-              >
-                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                  <Image source={require('./../../../public/icons/google.png')}
-                      style={{width: 24, height: 24}}
-                  />
-                  <Text style={{
-                    fontSize: 12,
-                    lineHeight: 15,
-                    fontWeight: 'bold',
-                    color: '#696969',
-                    marginLeft:  8
-                  }}>SIGN UP WITH GOOGLE</Text>
-                </View>
-            </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                          height: 48,
+                          padding: 10,
+                          width: '100%',
+                          backgroundColor: '#fcfcfc',
+                          color: '#FFFFFF',
+                          borderRadius: 6,
+                          justifyContent: 'center',
+                          borderColor: '#c4c4c4',
+                          borderWidth: 1
+                }}
+                activeOpacity={0.5}
+                // onPress={handleSubmitButton}
+                >
+                  <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <Image source={require('./../../../public/icons/google.png')}
+                        style={{width: 24, height: 24}}
+                    />
+                    <Text style={{
+                      fontSize: 12,
+                      lineHeight: 15,
+                      fontWeight: 'bold',
+                      color: '#696969',
+                      marginLeft:  8
+                    }}>SIGN IN WITH GOOGLE</Text>
+                  </View>
+              </TouchableOpacity>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                 <Text style={{fontSize: 14, lineHeight: 16, color: 'black', fontWeight: '600'}}>Don't Have Account ?</Text>

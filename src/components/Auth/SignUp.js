@@ -12,7 +12,13 @@ import {
     Dimensions
 } from 'react-native';
 
-const SignUp = () => {
+const SignUp = (props) => {
+
+    const {
+      handleSignUp,
+      handleLoginRedirect,
+      onSignUpCancel
+    } = props;
 
     let [userName, setUserName] = useState('');
     let [userEmail, setUserEmail] = useState('');
@@ -26,106 +32,168 @@ const SignUp = () => {
 
     return (
         <View style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
-      <ScrollView keyboardShouldPersistTaps="handled">
-        <KeyboardAvoidingView enabled>
-        <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: 50}}>
-            <Text style={{height: 18, fontSize: 15, lineHeight: 18, fontWeight: '500', color: 'black'}}>
-              Register Here
-            </Text>
-            <TouchableOpacity >
-              <Image source={require('./../../../public/icons/cross_icon.png')}
-                    style={{width: 38, height: 38, 
-                    position: 'absolute',
-                    top: -20,
-                    bottom: 0,
-                    right: 0,
-                    left: (Dimensions.get('window').width/4) + 20,
-                    marginRight: 16
-                  }}
+          <ScrollView keyboardShouldPersistTaps="handled">
+            <KeyboardAvoidingView enabled>
+            <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: 50}}>
+                <Text style={{height: 18, fontSize: 15, lineHeight: 18, fontWeight: '500', color: 'black'}}>
+                  Register Here
+                </Text>
+                <TouchableOpacity onPress={onSignUpCancel}>
+                  <Image source={require('./../../../public/icons/cross_icon.png')}
+                        style={{width: 38, height: 38, 
+                        position: 'absolute',
+                        top: -20,
+                        bottom: 0,
+                        right: 0,
+                        left: (Dimensions.get('window').width/4) + 20,
+                        marginRight: 16
+                      }}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  borderBottomColor: 'rgb(248, 248, 248)',
+                  borderBottomWidth: 2,
+              }}
               />
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              borderBottomColor: 'rgb(248, 248, 248)',
-              borderBottomWidth: 2,
-          }}
-          />
-          <View style={styles.SectionStyle}>
-            <Text style={styles.textStyle} >Full Name</Text>
-            <TextInput
-              style={styles.inputStyle}
-            //   onChangeText={UserName => setUserName(UserName)}
-              placeholderTextColor="#000000"
-              placeholder="Eg. Jhon Smith"
-              autoCapitalize="sentences"
-              returnKeyType="next"
-              blurOnSubmit={false}
-            />
-          </View>
-          <View style={styles.SectionStyle}>
-          <Text style={styles.textStyle} >Mobile No </Text>
-            <TextInput
-              style={styles.inputStyle}
-            //   onChangeText={UserEmail => setUserEmail(UserEmail)}
-              underlineColorAndroid="#F6F6F7"
-              placeholderTextColor="#000000"
-              keyboardType="email-address"
-              placeholder="Eg. +966 56 999 4324"
-            //   ref={ref => {
-            //     this._emailinput = ref;
-            //   }}
-              returnKeyType="next"
-            //   onSubmitEditing={() => this._ageinput && this._ageinput.focus()}
-              blurOnSubmit={false}
-            />
-          </View>
-          <View style={styles.SectionStyle}>
-            <Text style={styles.textStyle} >Email </Text>
-            <TextInput
-              style={styles.inputStyle}
-            //   onChangeText={UserAge => setUserAge(UserAge)}
-              underlineColorAndroid="#F6F6F7"
-              placeholderTextColor="#000000"
-              keyboardType="numeric"
-              placeholder="Example@lunchbox.com"
-            //   ref={ref => {
-            //     this._ageinput = ref;
-            //   }}
-            //   onSubmitEditing={() =>
-            //     this._addressinput && this._addressinput.focus()
-            //   }
-              blurOnSubmit={false}
-            />
-          </View>
-          <View style={styles.SectionStyle}>
-          <Text style={styles.textStyle} >Password </Text>
-            <TextInput
-              style={styles.inputStyle}
-            //   onChangeText={UserAddress => setUserAddress(UserAddress)}
-              underlineColorAndroid="#FFFFFF"
-              placeholderTextColor="#000000"
-              secureTextEntry={true}
-              placeholder="Example@lunchbox.com"
-            //   ref={ref => {
-            //     this._addressinput = ref;
-            //   }}
-              onSubmitEditing={Keyboard.dismiss}
-              blurOnSubmit={false}
-            />
-          </View>
-          <View style={styles.SectionStyle}>
-          <TouchableOpacity
-            style={styles.buttonStyle}
-            activeOpacity={0.5}
-            // onPress={handleSubmitButton}
-            >
-            <Text style={styles.buttonTextStyle}>REGISTER</Text>
-          </TouchableOpacity>
-          </View>
-        </KeyboardAvoidingView>
-      </ScrollView>
-    </View>
+              <View style={styles.SectionStyle}>
+                <Text style={styles.textStyle} >Full Name</Text>
+                <TextInput
+                  style={styles.inputStyle}
+                //   onChangeText={UserName => setUserName(UserName)}
+                  placeholderTextColor="#000000"
+                  placeholder="Eg. Jhon Smith"
+                  autoCapitalize="sentences"
+                  returnKeyType="next"
+                  blurOnSubmit={false}
+                />
+              </View>
+              <View style={styles.SectionStyle}>
+              <Text style={styles.textStyle} >Mobile No </Text>
+                <TextInput
+                  style={styles.inputStyle}
+                //   onChangeText={UserEmail => setUserEmail(UserEmail)}
+                  underlineColorAndroid="#F6F6F7"
+                  placeholderTextColor="#000000"
+                  keyboardType="email-address"
+                  placeholder="Eg. +966 56 999 4324"
+                //   ref={ref => {
+                //     this._emailinput = ref;
+                //   }}
+                  returnKeyType="next"
+                //   onSubmitEditing={() => this._ageinput && this._ageinput.focus()}
+                  blurOnSubmit={false}
+                />
+              </View>
+              <View style={styles.SectionStyle}>
+                <Text style={styles.textStyle} >Email </Text>
+                <TextInput
+                  style={styles.inputStyle}
+                //   onChangeText={UserAge => setUserAge(UserAge)}
+                  underlineColorAndroid="#F6F6F7"
+                  placeholderTextColor="#000000"
+                  keyboardType="numeric"
+                  placeholder="Example@lunchbox.com"
+                //   ref={ref => {
+                //     this._ageinput = ref;
+                //   }}
+                //   onSubmitEditing={() =>
+                //     this._addressinput && this._addressinput.focus()
+                //   }
+                  blurOnSubmit={false}
+                />
+              </View>
+              <View style={styles.SectionStyle}>
+              <Text style={styles.textStyle} >Password </Text>
+                <TextInput
+                  style={styles.inputStyle}
+                //   onChangeText={UserAddress => setUserAddress(UserAddress)}
+                  underlineColorAndroid="#FFFFFF"
+                  placeholderTextColor="#000000"
+                  secureTextEntry={true}
+                  placeholder="Example@lunchbox.com"
+                //   ref={ref => {
+                //     this._addressinput = ref;
+                //   }}
+                  onSubmitEditing={Keyboard.dismiss}
+                  blurOnSubmit={false}
+                />
+              </View>
+              <View style={styles.SectionStyle}>
+                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}} >
+                  <Text style={{color: 'black', fontSize: 14, lineHeight: 16, fontWeight: '500'}}>Already Have Account?</Text>
+                  <TouchableOpacity onPress={handleLoginRedirect}>
+                    <Text style={{color: '#17b39e', fontSize: 14, lineHeight: 16, fontWeight: '500'}}>
+                      Login Here
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <View style={styles.SectionStyle}>
+              <TouchableOpacity
+                  style={{
+                            height: 48,
+                            padding: 10,
+                            width: '100%',
+                            backgroundColor: '#3a5998',
+                            color: '#FFFFFF',
+                            borderRadius: 6,
+                            justifyContent: 'center'
+                  }}
+                  activeOpacity={0.5}
+                  // onPress={handleSubmitButton}
+                  >
+                    <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                      <Image source={require('./../../../public/icons/facebook.png')}
+                          style={{width: 24, height: 24}}
+                      />
+                      <Text style={styles.socialBtnText}>SIGN UP WITH FACEBOOK</Text>
+                    </View>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.SectionStyle}>
+                  <TouchableOpacity
+                    style={{
+                              height: 48,
+                              padding: 10,
+                              width: '100%',
+                              backgroundColor: '#fcfcfc',
+                              color: '#FFFFFF',
+                              borderRadius: 6,
+                              justifyContent: 'center',
+                              borderColor: '#c4c4c4',
+                              borderWidth: 1
+                    }}
+                    activeOpacity={0.5}
+                    // onPress={handleSubmitButton}
+                    >
+                      <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                        <Image source={require('./../../../public/icons/google.png')}
+                            style={{width: 24, height: 24}}
+                        />
+                        <Text style={{
+                          fontSize: 12,
+                          lineHeight: 15,
+                          fontWeight: 'bold',
+                          color: '#696969',
+                          marginLeft:  8
+                        }}>SIGN UP WITH GOOGLE</Text>
+                      </View>
+                  </TouchableOpacity>
+                </View>
+              <View style={styles.SectionStyle}>
+              <TouchableOpacity
+                style={styles.buttonStyle}
+                activeOpacity={0.5}
+                onPress={handleSignUp}
+                >
+                <Text style={styles.buttonTextStyle}>REGISTER</Text>
+              </TouchableOpacity>
+              </View>
+            </KeyboardAvoidingView>
+          </ScrollView>
+        </View>
     )
 }
 
@@ -185,5 +253,12 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 15,
     fontWeight: '500'
-  }
+  },
+  socialBtnText: {
+    fontSize: 12,
+    lineHeight: 15,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    marginLeft: 8
+  },
 });

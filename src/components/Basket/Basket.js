@@ -66,6 +66,24 @@ const Basket = ({ navigation }) => {
         setShowSignUp(true);
       }
 
+      const handleSignUp = () => {
+        setLoggedIn(true);
+          setShowSignUp(false);
+          navigation.setParams({isHeaderVisible: showHeader});
+          setShowHeader(!showHeader);
+      }
+
+      const handleLoginRedirect = () => {
+        setShowLogin(true);
+        setShowSignUp(false);
+      }
+
+      const onSignUpCancel = () => {
+        setShowSignUp(false);
+        navigation.setParams({isHeaderVisible: showHeader});
+        setShowHeader(!showHeader);
+      }
+
     return (
         <View style={{flex: 1}} >
             <ScrollView keyboardShouldPersistTaps="handled">
@@ -291,7 +309,10 @@ const Basket = ({ navigation }) => {
                 style={[styles.subView,
                   {transform: [{translateY: bounceValue}]}]}
               >
-                <SignUp  />
+                <SignUp handleSignUp={handleSignUp} 
+                    handleLoginRedirect={handleLoginRedirect} 
+                    onSignUpCancel={onSignUpCancel}
+                    />
               </Animated.View>
             }
         </View>

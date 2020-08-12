@@ -1,0 +1,1 @@
+export const DOMAIN = 'http://api-lunchbox.alfalahchemical.com/';

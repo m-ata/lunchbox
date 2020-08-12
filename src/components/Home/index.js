@@ -52,7 +52,9 @@ const MainStackNavigator = () => {
                       alignSelf: 'center', 
                       color: 'white' ,
                       fontSize: 14,
-                      lineHeight: 16
+                      lineHeight: 16,
+                      display: 'flex',
+                      justifyContent: 'center'
                     }}>
                 <Picker.Item  label="Al Murabba, Riyadh" value="riyadh" />
                 <Picker.Item label="Al Murabba, Makkah" value="makkah" />
@@ -68,7 +70,13 @@ const MainStackNavigator = () => {
                 source={require('./../../../public/icons/back_icon.png')}
                 style={{width: 33, height: 33}}
               />
-            </TouchableOpacity>
+            </TouchableOpacity>,
+              headerRight: () => <TouchableOpacity style={{marginRight: 16}}>
+                <Image
+                source={require('./../../../public/icons/search.png')}
+                style={{width: 33, height: 33}}
+              />
+              </TouchableOpacity>
               }
           }}
        />

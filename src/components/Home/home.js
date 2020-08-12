@@ -1,9 +1,22 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 import { View, Text, Image, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Dimensions } from 'react-native'
+import { DOMAIN } from '../models/contants';
 
 const Home = ({ navigation }) => {
+
+  const [brands, setBrands] = useState([]);
+
+  useEffect(() => {
+      axios.get(`${DOMAIN}api/brand/all`)
+      .then(res => {
+          console.log('res => ', res);
+      }).catch(err => {
+        console.log('err ', err)
+      })
+  }, []);
 
   const restaurants = [
     {

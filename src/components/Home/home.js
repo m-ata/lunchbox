@@ -12,7 +12,9 @@ const Home = ({ navigation }) => {
   useEffect(() => {
       axios.get(`${DOMAIN}api/brand/all`)
       .then(res => {
-          console.log('res => ', res);
+          if (res.status === 200) {
+            setBrands(res.data.brands);
+          }
       }).catch(err => {
         console.log('err ', err)
       })
@@ -43,25 +45,26 @@ const Home = ({ navigation }) => {
       <View style={styles.container}>
         <ScrollView keyboardShouldPersistTaps="handled">
           {
-            restaurants.map(r => {
+            brands.length > 0 && brands.map((b, i) => {
               return (
-                <TouchableOpacity onPress={() => {navigation.navigate('Menus')}}>
+                <TouchableOpacity key={`brand-${i}`}
+                 onPress={() => {navigation.navigate('Menus', { Locations: b.Locations })}}>
                   <View style={styles.cardStyle} >
                     <ImageBackground
                       style={styles.backgroundImgStyle}
                       imageStyle={{ borderRadius: 15}}
-                      source={r.image}
+                      source={require('./../../../public/images/res1.jpg')}
                     >
                       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                         <Image 
                         style={styles.logoStyle}
-                        source={r.logo}
+                        source={require('./../../../public/images/logo1.png')}
                         />
                         <Text style={styles.title} >
-                          { r.title }
+                          { b.Name }
                         </Text>
                         <Text style={styles.description} >
-                          { r.description }
+                          { b.Address }
                         </Text>
                       </View>
                     </ImageBackground>

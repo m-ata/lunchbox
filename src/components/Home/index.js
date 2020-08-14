@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./Home";
-import { Picker, Text, TouchableOpacity, Image } from 'react-native';
+import { Picker, Text, TouchableOpacity, Image, View } from 'react-native';
 import SignIn from "../Auth/SignIn";
 import Menus from "./Menus";
 import MenuDetail from "./MenuDetail";
@@ -28,7 +28,6 @@ const MainStackNavigator = () => {
           style={{  
                     alignSelf: 'center', 
                     color: 'white',
-                   
                   }}
         >
           <Text style={{ alignSelf: 'center',  fontWeight: 'bold', height: 21, width: 132, fontSize: 18, lineHeight: 21}}> Welcome to TLB</Text>
@@ -42,23 +41,33 @@ const MainStackNavigator = () => {
       <Stack.Screen name="SignIn" component={SignIn} options={{headerShown: false,}}
        />
       <Stack.Screen name="Menus" component={Menus}
-          options={({navigation}) => {
+          options={({navigation, route}) => {
             return {
-              headerTitle: () => <Picker 
-                  selectedValue={selectedValue}   
-                  onValueChange={(value) => setSelectedValue(value)}
-                   style={{ height: 40, 
-                      width: 210,
-                      alignSelf: 'center', 
-                      color: 'white' ,
-                      fontSize: 14,
-                      lineHeight: 16,
-                      display: 'flex',
-                      justifyContent: 'center'
-                    }}>
-                <Picker.Item  label="Al Murabba, Riyadh" value="riyadh" />
-                <Picker.Item label="Al Murabba, Makkah" value="makkah" />
-              </Picker>,
+              headerTitle: () => <View style={{
+                alignSelf: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
+              <Text style={{fontSize: 12, 
+                lineHeight: 14, 
+                color: 'white',
+                }}>The LunchBox</Text>
+                <TouchableOpacity style={{flexDirection: 'row',}}>
+                  <Text style={{
+                    fontSize: 15,
+                    lineHeight: 20,
+                    fontWeight: '500',
+                    color: 'white'
+                  }}>
+                    {route.params.Locations[0].Name}
+                  </Text>
+                  <Image 
+                      source={require('./../../../public/icons/down_arrow.png')}
+                      style={{height: 8, width: 13, marginLeft: 8, marginTop: 6}}
+                  />
+                </TouchableOpacity>
+              </View>,
               headerStyle: {
                 backgroundColor: 'rgb(255, 137, 85)',
                 color: '#ffffff',

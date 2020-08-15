@@ -53,12 +53,13 @@ const Home = ({ navigation }) => {
                     <ImageBackground
                       style={styles.backgroundImgStyle}
                       imageStyle={{ borderRadius: 15}}
-                      source={require('./../../../public/images/res1.jpg')}
+                      source={{ uri: b.Image}}
                     >
                       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                         <Image 
                         style={styles.logoStyle}
-                        source={require('./../../../public/images/logo1.png')}
+                        source={{ uri: b.CompanyURl}}
+                        
                         />
                         <Text style={styles.title} >
                           { b.Name }
